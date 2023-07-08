@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://example.com/2023/07/08/InstallAirSimPlugin/AirSimInstall_13.png">
 <meta property="og:image" content="http://example.com/2023/07/08/InstallAirSimPlugin/AirSimInstall_14.png">
 <meta property="article:published_time" content="2023-07-08T06:19:18.000Z">
-<meta property="article:modified_time" content="2023-07-08T14:58:36.927Z">
+<meta property="article:modified_time" content="2023-07-08T15:08:03.282Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine Airsim">
 <meta name="twitter:card" content="summary">
@@ -234,7 +234,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-07-08 14:19:18 / 修改時間：22:58:36" itemprop="dateCreated datePublished" datetime="2023-07-08T14:19:18+08:00">2023-07-08</time>
+              <time title="創建時間：2023-07-08 14:19:18 / 修改時間：23:08:03" itemprop="dateCreated datePublished" datetime="2023-07-08T14:19:18+08:00">2023-07-08</time>
             </span>
 
           
@@ -262,26 +262,26 @@
 <img src="/2023/07/08/InstallAirSimPlugin/VSinstall_4.png" class="">
 
 <h3 id="安裝-AirSim"><a href="#安裝-AirSim" class="headerlink" title="安裝 AirSim"></a>安裝 AirSim</h3><p><strong>接下來的步驟相當繁瑣，請按照步驟安裝，否則會安裝失敗</strong></p>
+<p>操作流程可以參考<a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/build_windows/">官方文件</a></p>
 <p>根據安裝的引擎版本，請分別至對應的連結：<a target="_blank" rel="noopener" href="https://github.com/microsoft/AirSim">4.X.X</a>、<a target="_blank" rel="noopener" href="https://github.com/CodexLabsLLC/Colosseum">5.X.X</a></p>
 <p>接下來會以UE5的連結做示範，進到頁面後，先點選”Code”，然後複製網址</p>
 <img src="/2023/07/08/InstallAirSimPlugin/AirSimInstall_1.png" class="">
 
-<p>接下來到要安裝AirSim環境的資料夾，**(請注意，絕對不可以安裝在C槽)**，點選右鍵，Git Bash Here</p>
+<p>接下來到要安裝AirSim環境的資料夾，<strong>請注意，絕對不可以安裝在C槽</strong>，點選右鍵，Git Bash Here</p>
 <img src="/2023/07/08/InstallAirSimPlugin/AirSimInstall_2.png" class="">
 
 <p>打上下列指令：<br>UE5:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$git clone https://github.com/CodexLabsLLC/Colosseum.git</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/CodexLabsLLC/Colosseum.git</span><br></pre></td></tr></table></figure>
 
 <p>UE4:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$git clone https://github.com/microsoft/AirSim.git</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/microsoft/AirSim.git</span><br></pre></td></tr></table></figure>
 <p>看到下圖代表已經下載完成</p>
 <img src="/2023/07/08/InstallAirSimPlugin/AirSimInstall_3.png" class="">
 
-<p>接下來的操作可以參考<a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/build_windows/">官方文件</a></p>
 <p>開啟”Developer Command Prompt for VS 2022”，用”cd your_file_path”前往安裝AirSim環境的目錄下</p>
 <img src="/2023/07/08/InstallAirSimPlugin/AirSimInstall_4.png" class="">
 
-<p>☆輸入”build”，等待它安裝，會需要一段時間</p>
+<h4 id="★"><a href="#★" class="headerlink" title="★"></a>★</h4><p>輸入”build”，等待它安裝，會需要一段時間</p>
 <img src="/2023/07/08/InstallAirSimPlugin/AirSimInstall_5.png" class="">
 
 <p>看到顯示下圖字樣，代表建置完成</p>
@@ -301,7 +301,7 @@
 
 <p>你有可能會出現類似以下敘述的錯誤</p>
 <img src="/2023/07/08/InstallAirSimPlugin/issue1.png" class="">
-<p>這邊我嘗試了各種辦法，但還沒找到一個明確的解決方案，目前我認為是在執行”Build.cmd”的時候，發生了不明錯誤，造成檔案建置不完全，因此我們要再重新建置直到成功為止(重新做一次前面標☆的地方)</p>
+<p>這邊我嘗試了各種辦法，但還沒找到一個明確的解決方案，目前我認為是在建置的時候，發生了不明錯誤，造成檔案建置不完全，因此我們要再重新建置直到成功為止(重新做一次前面標★的地方)</p>
 <p>執行成功後，便會開啟專案</p>
 <img src="/2023/07/08/InstallAirSimPlugin/AirSimInstall_11.png" class="">
 
@@ -391,7 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DGit"><span class="nav-number">2.</span> <span class="nav-text">安裝Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Visual-Studio-2022"><span class="nav-number">3.</span> <span class="nav-text">安裝 Visual Studio 2022</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-AirSim"><span class="nav-number">4.</span> <span class="nav-text">安裝 AirSim</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DGit"><span class="nav-number">2.</span> <span class="nav-text">安裝Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Visual-Studio-2022"><span class="nav-number">3.</span> <span class="nav-text">安裝 Visual Studio 2022</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-AirSim"><span class="nav-number">4.</span> <span class="nav-text">安裝 AirSim</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">4.1.</span> <span class="nav-text">★</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
