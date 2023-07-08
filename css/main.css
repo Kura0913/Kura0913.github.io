@@ -1196,7 +1196,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #17c659;
+  background: #70ff22;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2282,6 +2282,8 @@ ul.breadcrumb li + li:last-child {
 hr {
   height: 2px;
   margin: 20px 0;
+  font-size: 16;
+  color: #fff;
 }
 .btn {
   padding: 0 10px;
@@ -2519,7 +2521,7 @@ hr {
   padding: 1px 5px;
 }
 .posts-expand .post-tags a:hover {
-  background: #ccc;
+  background: #2c2c2c;
 }
 .posts-expand .post-nav {
   margin-top: 40px;
