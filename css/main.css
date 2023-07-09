@@ -1019,7 +1019,7 @@ pre .javascript .function {
   margin: 0;
 }
 .site-subtitle {
-  color: #999;
+  color: #fff;
   font-size: 0.8125em;
   margin: 10px 0;
 }
@@ -1196,7 +1196,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #13acf0;
+  background: #ffe960;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2603,4 +2603,7 @@ body {
 }
 .header-inner {
   opacity: 0.95;
+}
+.brand {
+  color: #fff;
 }
