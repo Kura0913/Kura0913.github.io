@@ -5,7 +5,7 @@
   --text-color: #555;
   --blockquote-color: #666;
   --link-color: #555;
-  --link-hover-color: $ #0593d3;
+  --link-hover-color: #222;
   --brand-color: #222;
   --brand-hover-color: #222;
   --table-row-odd-bg-color: #f9f9f9;
@@ -1196,7 +1196,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #2694e7;
+  background: #c81f33;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
