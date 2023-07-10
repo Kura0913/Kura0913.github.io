@@ -40,7 +40,7 @@
     --btn-default-hover-border-color: #666;
   }
   img {
-    opacity: 0.75;
+    opacity: 0.9;
   }
   img:hover {
     opacity: 0.9;
@@ -1196,7 +1196,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4a86c7;
+  background: #b558ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
