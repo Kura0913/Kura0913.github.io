@@ -20,41 +20,39 @@
     var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前置作業在安裝AirSim前，你必須完成Unreal Engine的安裝，安裝方式請看：Unreal Engine安裝">
+  <meta name="description" content="沒有適合的Material?在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="架設AirSim環境及安裝AirSim Plugin">
-<meta property="og:url" content="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/index.html">
+<meta property="og:title" content="Unreal Engine 調整Material的顏色">
+<meta property="og:url" content="https://kura0913.github.io/2023/07/11/UnrealEngineMaterialColor/index.html">
 <meta property="og:site_name" content="Kura&#39;s BLOG">
-<meta property="og:description" content="前置作業在安裝AirSim前，你必須完成Unreal Engine的安裝，安裝方式請看：Unreal Engine安裝">
+<meta property="og:description" content="沒有適合的Material?在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/Lfv9aNs.png">
-<meta property="og:image" content="https://i.imgur.com/djB43zx.png">
-<meta property="og:image" content="https://i.imgur.com/53sE0E4.png">
-<meta property="og:image" content="https://i.imgur.com/GFtMoZW.png">
-<meta property="og:image" content="https://i.imgur.com/YATy621.png">
-<meta property="og:image" content="https://i.imgur.com/Ra6CBbo.png">
-<meta property="og:image" content="https://i.imgur.com/ZWQuZNR.png">
-<meta property="og:image" content="https://i.imgur.com/xHJNjDp.png">
-<meta property="og:image" content="https://i.imgur.com/BoJBVCf.png">
-<meta property="og:image" content="https://i.imgur.com/8wNo3J3.png">
-<meta property="og:image" content="https://i.imgur.com/nYeD9wx.png">
-<meta property="og:image" content="https://i.imgur.com/JHeh0YP.png">
-<meta property="og:image" content="https://i.imgur.com/E2QH902.png">
-<meta property="og:image" content="https://i.imgur.com/AKXUsjw.png">
-<meta property="og:image" content="https://i.imgur.com/XHUCeug.png">
-<meta property="og:image" content="https://i.imgur.com/2N5GsZn.png">
-<meta property="og:image" content="https://i.imgur.com/hPEYtBU.png">
-<meta property="og:image" content="https://i.imgur.com/qwzLozQ.png">
-<meta property="og:image" content="https://i.imgur.com/ykGowHk.png">
-<meta property="article:published_time" content="2023-07-08T06:19:18.000Z">
-<meta property="article:modified_time" content="2023-07-11T13:18:23.240Z">
+<meta property="og:image" content="https://i.imgur.com/SzC9wuN.png">
+<meta property="og:image" content="https://i.imgur.com/vKx97e8.png">
+<meta property="og:image" content="https://i.imgur.com/MOOt0k0.png">
+<meta property="og:image" content="https://i.imgur.com/Fvi7qSc.png">
+<meta property="og:image" content="https://i.imgur.com/ECyxmYy.png">
+<meta property="og:image" content="https://i.imgur.com/GEYJCiH.png">
+<meta property="og:image" content="https://i.imgur.com/F3CpvKY.png">
+<meta property="og:image" content="https://i.imgur.com/WFzuGUu.png">
+<meta property="og:image" content="https://i.imgur.com/qte6dlt.png">
+<meta property="og:image" content="https://i.imgur.com/CffQxYl.png">
+<meta property="og:image" content="https://i.imgur.com/PTAdYmH.png">
+<meta property="og:image" content="https://i.imgur.com/GleSTU6.png">
+<meta property="og:image" content="https://i.imgur.com/1lJJ6pS.png">
+<meta property="og:image" content="https://i.imgur.com/in1AMiB.png">
+<meta property="og:image" content="https://i.imgur.com/7bWFOMR.png">
+<meta property="og:image" content="https://i.imgur.com/NzC5bor.png">
+<meta property="og:image" content="https://i.imgur.com/mqtyQj9.png">
+<meta property="og:image" content="https://i.imgur.com/N4uqQJN.png">
+<meta property="article:published_time" content="2023-07-11T12:45:49.000Z">
+<meta property="article:modified_time" content="2023-07-11T15:04:06.260Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
-<meta property="article:tag" content="Airsim">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/Lfv9aNs.png">
+<meta name="twitter:image" content="https://i.imgur.com/SzC9wuN.png">
 
-<link rel="canonical" href="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/">
+<link rel="canonical" href="https://kura0913.github.io/2023/07/11/UnrealEngineMaterialColor/">
 
 
 <script id="page-configurations">
@@ -67,7 +65,7 @@
   };
 </script>
 
-  <title>架設AirSim環境及安裝AirSim Plugin | Kura's BLOG</title>
+  <title>Unreal Engine 調整Material的顏色 | Kura's BLOG</title>
   
 
 
@@ -222,7 +220,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/">
+    <link itemprop="mainEntityOfPage" href="https://kura0913.github.io/2023/07/11/UnrealEngineMaterialColor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -235,7 +233,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          架設AirSim環境及安裝AirSim Plugin
+          Unreal Engine 調整Material的顏色
         </h1>
 
         <div class="post-meta">
@@ -244,16 +242,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2023-07-08 14:19:18" itemprop="dateCreated datePublished" datetime="2023-07-08T14:19:18+08:00">2023-07-08</time>
+              <time title="創建時間：2023-07-11 20:45:49 / 修改時間：23:04:06" itemprop="dateCreated datePublished" datetime="2023-07-11T20:45:49+08:00">2023-07-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-07-11 21:18:23" itemprop="dateModified" datetime="2023-07-11T21:18:23+08:00">2023-07-11</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -264,7 +256,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unreal-Engine/Airsim%E7%92%B0%E5%A2%83%E6%9E%B6%E8%A8%AD/" itemprop="url" rel="index"><span itemprop="name">Airsim環境架設</span></a>
+                  <a href="/categories/Unreal-Engine/Material/" itemprop="url" rel="index"><span itemprop="name">Material</span></a>
                 </span>
             </span>
 
@@ -279,73 +271,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h3><p>在安裝AirSim前，你必須完成Unreal Engine的安裝，安裝方式請看：<a href="https://kura0913.github.io/2023/07/07/UnrealEngineInstall/">Unreal Engine安裝</a></p>
+        <h3 id="沒有適合的Material"><a href="#沒有適合的Material" class="headerlink" title="沒有適合的Material?"></a>沒有適合的Material?</h3><p>在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到</p>
 <span id="more"></span>
+<p>疑?怎麼沒有我要的模型?或是模型是對了，但是顏色卻不是你想要的，這時可以選擇重新做一個Texture，優點當然是可以為物件做一個全新的顏色設計，而且精細度可以依個人需要去做調整。</p>
+<p>但是，如果沒有3D建模的專業的人怎麼辦?(欸嘿!就是我!)這時候就適合使用接下來要教學的方法，這個方法只會調整Texture的顏色，本來設計好的紋路是不會去動到的，那麼話不多說，開始本篇的教學~</p>
+<h3 id="基於原本的Texture，調整Material顏色教學"><a href="#基於原本的Texture，調整Material顏色教學" class="headerlink" title="基於原本的Texture，調整Material顏色教學"></a>基於原本的Texture，調整Material顏色教學</h3><p>首先，我們先找到想要調整的Material，這邊以圖中的”MI_jcGrdLineA”做示範，點擊兩下打開</p>
+<div img-align="middle"><img src="https://i.imgur.com/SzC9wuN.png" style="display:block; margin:auto;"/></div>
 
-<h3 id="安裝Git"><a href="#安裝Git" class="headerlink" title="安裝Git"></a>安裝Git</h3><p>至<a target="_blank" rel="noopener" href="https://git-scm.com/">Git官網</a>下載最新版的Git，並且一定要安裝 Git Bash 功能<br>(之後會再寫一篇安裝Git與Github連結設定的教學)</p>
-<h3 id="安裝-Visual-Studio-2022"><a href="#安裝-Visual-Studio-2022" class="headerlink" title="安裝 Visual Studio 2022"></a>安裝 Visual Studio 2022</h3><p>點擊<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hant/vs/">連結</a>下載 Visual Studio 2022，免費版請選擇Community版本</p>
-<p>安裝完成後，請安裝下圖中的組態</p>
-<div img-align="middle"><img src="https://i.imgur.com/Lfv9aNs.png" style="display:block; margin:auto;"/></div>
-<div img-align="middle"><img src="https://i.imgur.com/djB43zx.png" style="display:block; margin:auto;"/></div>
+<p>如果打開是以下畫面的話就參考接下來的步驟，如果是Blueprint畫面，則可以直接跳至★</p>
+<div img-align="middle"><img src="https://i.imgur.com/vKx97e8.png" style="display:block; margin:auto;"/></div>
 
-<p>安裝完成後，可以點擊修改，檢查組態是否安裝完整，<strong>特別至個別元件檢查是否安裝到”Windows 10 SDK 10.0.19041”</strong></p>
-<div img-align="middle"><img src="https://i.imgur.com/53sE0E4.png" style="display:block; margin:auto;"/></div>
-<div img-align="middle"><img src="https://i.imgur.com/GFtMoZW.png" style="display:block; margin:auto;"/></div>
+<p>接下來，右邊欄有一個”BaceColor”，是這個Material檔案套用的Texture，點擊檔名下方的”前往資料夾”，就會跳到存放Texture的地方</p>
+<div img-align="middle"><img src="https://i.imgur.com/MOOt0k0.png" style="display:block; margin:auto;"/></div>
 
-<h3 id="安裝-AirSim"><a href="#安裝-AirSim" class="headerlink" title="安裝 AirSim"></a>安裝 AirSim</h3><p><strong>接下來的步驟相當繁瑣，請按照步驟安裝，否則會安裝失敗</strong></p>
-<p>操作流程可以參考<a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/build_windows/">官方文件</a></p>
-<p>根據安裝的引擎版本，請分別至對應的連結：<a target="_blank" rel="noopener" href="https://github.com/microsoft/AirSim">4.X.X</a>、<a target="_blank" rel="noopener" href="https://github.com/CodexLabsLLC/Colosseum">5.X.X</a></p>
-<p>接下來會以UE5的連結做示範，進到頁面後，先點選”Code”，然後複製網址</p>
-<div img-align="middle"><img src="https://i.imgur.com/YATy621.png" style="display:block; margin:auto;"/></div>
+<p>這邊先把Texture的路徑記下來，然後回到”MI_jcGrdLineA”，右邊欄有一個”Parent”，接下來自己製作Material的時候，要基於這個”Parent”的設計結構，最後顯示出來的紋路才會跟原本的一樣，因此我們一樣點選檔名下方的”前往資料夾”，並打開該檔案，應該會看到Blueprint畫面，如果不是，就基於上述方法繼續往上找”Parent”，直到打開的頁面為Blueprint為止，這邊的”Parent”的檔名為”MM_opacity”</p>
+<h4 id="★"><a href="#★" class="headerlink" title="★"></a>★</h4><p>打開後，整個Blueprint就是模板，等等要基於此模板來設計，全選之後先放著</p>
+<div img-align="middle"><img src="https://i.imgur.com/Fvi7qSc.png" style="display:block; margin:auto;"/></div>
 
-<p>接下來到要安裝AirSim環境的資料夾，點選右鍵，Git Bash Here，<font color=#FF0000><strong>請注意，絕對不可以安裝在C槽，路徑要全英文</strong></font></p>
-<div img-align="middle"><img src="https://i.imgur.com/Ra6CBbo.png" style="display:block; margin:auto;"/></div>
+<p>到要存放新的Material的資料夾點擊右鍵，選擇”Material”</p>
+<div img-align="middle"><img src="https://i.imgur.com/ECyxmYy.png" style="display:block; margin:auto;"/></div>
 
-<p>打上下列指令：<br>UE5:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/CodexLabsLLC/Colosseum.git</span><br></pre></td></tr></table></figure>
+<p>取好名字後打開，會看到以下畫面</p>
+<div img-align="middle"><img src="https://i.imgur.com/GEYJCiH.png" style="display:block; margin:auto;"/></div>
 
-<p>UE4:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/microsoft/AirSim.git</span><br></pre></td></tr></table></figure>
-<p>看到下圖代表已經下載完成</p>
-<div img-align="middle"><img src="https://i.imgur.com/ZWQuZNR.png" style="display:block; margin:auto;"/></div>
+<p>回到”MM_opacity”(your Parent file)，把剛剛框起來部分複製，然後貼到剛剛自己建立的Material貼上，貼上後你會發現線全部斷掉了，這是正常的，請依據”MM_opacity”(your Parent file)的設計連上</p>
+<div img-align="middle"><img src="https://i.imgur.com/F3CpvKY.png" style="display:block; margin:auto;"/></div>
 
-<p>開啟”Developer Command Prompt for VS 2022”，用”cd your_file_path”前往安裝AirSim環境的目錄下</p>
-<div img-align="middle"><img src="https://i.imgur.com/xHJNjDp.png" style="display:block; margin:auto;"/></div>
+<p>按住鍵盤第一排的3，在空白處點左鍵，對出現的方塊點右鍵，選擇圖中紅色框框中的選項，並為他取一個你認得出來的名字，這邊取名為”Tint_colour”</p>
+<div img-align="middle"><img src="https://i.imgur.com/WFzuGUu.png" style="display:block; margin:auto;"/></div>
 
-<h4 id="★"><a href="#★" class="headerlink" title="★"></a>★</h4><p>輸入”build”，等待它安裝，會需要一段時間</p>
-<div img-align="middle"><img src="https://i.imgur.com/BoJBVCf.png" style="display:block; margin:auto;"/></div>
+<p>按住鍵盤第一排的1，在空白處點左鍵，對出現的方塊點右鍵，選擇圖中紅色框框中的選項，並為他取一個你認得出來的名字，這邊取名為”Tint_Intensity”</p>
+<div img-align="middle"><img src="https://i.imgur.com/qte6dlt.png" style="display:block; margin:auto;"/></div>
 
-<p>看到顯示下圖字樣，代表建置完成</p>
-<div img-align="middle"><img src="https://i.imgur.com/8wNo3J3.png" style="display:block; margin:auto;"/></div>
+<p>在空白處點右鍵，搜尋”Multiply”，叫出方塊，在空白處再點一下右鍵，搜尋”Blend_Overlay”，同樣叫出方塊，然後將線連接成下圖</p>
+<div img-align="middle"><img src="https://i.imgur.com/CffQxYl.png" style="display:block; margin:auto;"/></div>
 
-<p>接著，可以點擊資料夾目錄下的Unreal，會看到一個名叫”Plugins”的資料夾，在未來如果你的UE5(UE4)專案需要使用到AirSim，將此資料夾複製到該專案裡面，該專案就能使用AirSim Plugin</p>
-<div img-align="middle"><img src="https://i.imgur.com/nYeD9wx.png" style="display:block; margin:auto;"/></div>
+<p>如果連接會用到”Opacity Mask”節點，則點選棕色方塊，到左邊欄找到”Blend Mode”選項，調成”Mask”來啟用節點</p>
+<div img-align="middle"><img src="https://i.imgur.com/PTAdYmH.png" style="display:block; margin:auto;"/></div>
 
-<p>接下來要來確認 AirSim 的環境是可以正常運作的，在與”Plugins”資料夾同一個目錄下，點選”Environments”，裡面有一個預設專案”Blocks”，內部已經安裝好了AirSim Plugin</p>
-<div img-align="middle"><img src="https://i.imgur.com/JHeh0YP.png" style="display:block; margin:auto;"/></div>
+<p>點擊名為”BaceColor”的方塊，這時左下角可以找到一個可以選擇Texture的地方，將前面記下的Texture匯入，匯入成功後，紅色框框處都會變成你所選的Texture，完成後就可以存檔了</p>
+<div img-align="middle"><img src="https://i.imgur.com/GleSTU6.png" style="display:block; margin:auto;"/></div>
 
-<p>打開”Block”專案，查看是否有一個名叫”Blocks.sln”的檔案，如果沒有，可以對”Blocks.uproject”按右鍵，選擇”Generate Visual Studio project files”來生成”Blocks.sln”</p>
-<div img-align="middle"><img src="https://i.imgur.com/E2QH902.png" style="display:block; margin:auto;"/></div>
+<p>回到自己建立的Material的資料夾，對自己建立的Material按右鍵，選擇紅色框框的選項，點選後會建立一個新的Material，取好名字後打開</p>
+<div img-align="middle"><img src="https://i.imgur.com/1lJJ6pS.png" style="display:block; margin:auto;"/></div>
 
-<p>接下來，打開”Blocks.sln”，將偵錯模式改成”Development Editor”，再按執行</p>
-<div img-align="middle"><img src="https://i.imgur.com/AKXUsjw.png" style="display:block; margin:auto;"/></div>
+<p>將右欄的”Parent”改為前面自己建立的Material</p>
+<div img-align="middle"><img src="https://i.imgur.com/in1AMiB.png" style="display:block; margin:auto;"/></div>
 
-<p>你有可能會出現類似以下敘述的錯誤</p>
-<div img-align="middle"><img src="https://i.imgur.com/XHUCeug.png" style="display:block; margin:auto;"/></div>
+<p>此時右欄會出現剛剛我們做的設定，將他們打勾就可以啟用了</p>
+<div img-align="middle"><img src="https://i.imgur.com/7bWFOMR.png" style="display:block; margin:auto;"/></div>
 
-<p>這邊我嘗試了各種辦法，但還沒找到一個明確的解決方案，目前我認為是在建置的時候，發生了不明錯誤，造成檔案建置不完全，因此我們要再重新建置直到成功為止(重新做一次前面標★的地方)</p>
-<p>執行成功後，便會開啟專案</p>
-<div img-align="middle"><img src="https://i.imgur.com/2N5GsZn.png" style="display:block; margin:auto;"/></div>
+<p>這邊就示範幾種顏色</p>
+<div img-align="middle"><img src="https://i.imgur.com/NzC5bor.png" style="display:block; margin:auto;"/></div>
+<div img-align="middle"><img src="https://i.imgur.com/mqtyQj9.png" style="display:block; margin:auto;"/></div>
+<div img-align="middle"><img src="https://i.imgur.com/N4uqQJN.png" style="display:block; margin:auto;"/></div>
 
-<p>進一步確定是否完整安裝，按下”Alt + p”或是綠色播放鍵，會顯示以下畫面：</p>
-<div img-align="middle"><img src="https://i.imgur.com/hPEYtBU.png" style="display:block; margin:auto;"/></div>
-
-<p>這邊是在詢問要使用哪種交通工具進行模擬，AirSim內建提供了 Car 以及 Multirotor 可以選擇，點選”Yes”會使用 Car 來模擬，點選”No”會使用 Multirotor 來模擬，兩個都選選看是否能正常運作，如果能正常執行沒有報錯的話，代表安裝成功啦~</p>
-<p>Multirotor模擬畫面</p>
-<div img-align="middle"><img src="https://i.imgur.com/qwzLozQ.png" style="display:block; margin:auto;"/></div>
-
-<p>Car模擬畫面</p>
-<div img-align="middle"><img src="https://i.imgur.com/ykGowHk.png" style="display:block; margin:auto;"/></div>
+<p>稍微玩過之後就可以發現，”Tint_colour”可以用來做初步的選擇顏色，”Tint_Intensity”可以做後續的亮度調整，接下來就套用到原先的物件上，挑出自己滿意的顏色吧~</p>
 
     </div>
 
@@ -356,7 +337,6 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Unreal-Engine/" rel="tag"># Unreal Engine</a>
-              <a href="/tags/Airsim/" rel="tag"># Airsim</a>
           </div>
 
         
@@ -365,13 +345,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/07/07/UnrealEngineInstall/" rel="prev" title="Unreal Engine安裝">
-      <i class="fa fa-chevron-left"></i> Unreal Engine安裝
+    <a href="/2023/07/08/InstallAirSimPlugin/" rel="prev" title="架設AirSim環境及安裝AirSim Plugin">
+      <i class="fa fa-chevron-left"></i> 架設AirSim環境及安裝AirSim Plugin
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/07/11/UnrealEngineMaterialColor/" rel="next" title="Unreal Engine 調整Material的顏色">
-      Unreal Engine 調整Material的顏色 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -430,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DGit"><span class="nav-number">2.</span> <span class="nav-text">安裝Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Visual-Studio-2022"><span class="nav-number">3.</span> <span class="nav-text">安裝 Visual Studio 2022</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-AirSim"><span class="nav-number">4.</span> <span class="nav-text">安裝 AirSim</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">4.1.</span> <span class="nav-text">★</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%92%E6%9C%89%E9%81%A9%E5%90%88%E7%9A%84Material"><span class="nav-number">1.</span> <span class="nav-text">沒有適合的Material?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%96%BC%E5%8E%9F%E6%9C%AC%E7%9A%84Texture%EF%BC%8C%E8%AA%BF%E6%95%B4Material%E9%A1%8F%E8%89%B2%E6%95%99%E5%AD%B8"><span class="nav-number">2.</span> <span class="nav-text">基於原本的Texture，調整Material顏色教學</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">2.1.</span> <span class="nav-text">★</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
