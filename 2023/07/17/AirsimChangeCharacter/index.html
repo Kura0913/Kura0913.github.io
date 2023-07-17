@@ -20,41 +20,29 @@
     var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前置作業在安裝AirSim前，你必須完成Unreal Engine的安裝，安裝方式請看：Unreal Engine安裝">
+  <meta name="description" content="使用過AirSim之後，你是否感受到它的強大了呢?AirSim可以提供相當多元的輔助，在深度學習、機器學習方面尤其明顯">
 <meta property="og:type" content="article">
-<meta property="og:title" content="架設AirSim環境及安裝AirSim Plugin">
-<meta property="og:url" content="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/index.html">
+<meta property="og:title" content="Airsim更換Actor">
+<meta property="og:url" content="https://kura0913.github.io/2023/07/17/AirsimChangeCharacter/index.html">
 <meta property="og:site_name" content="Kura&#39;s BLOG">
-<meta property="og:description" content="前置作業在安裝AirSim前，你必須完成Unreal Engine的安裝，安裝方式請看：Unreal Engine安裝">
+<meta property="og:description" content="使用過AirSim之後，你是否感受到它的強大了呢?AirSim可以提供相當多元的輔助，在深度學習、機器學習方面尤其明顯">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/Lfv9aNs.png">
-<meta property="og:image" content="https://i.imgur.com/djB43zx.png">
-<meta property="og:image" content="https://i.imgur.com/53sE0E4.png">
-<meta property="og:image" content="https://i.imgur.com/GFtMoZW.png">
-<meta property="og:image" content="https://i.imgur.com/YATy621.png">
-<meta property="og:image" content="https://i.imgur.com/Ra6CBbo.png">
-<meta property="og:image" content="https://i.imgur.com/ZWQuZNR.png">
-<meta property="og:image" content="https://i.imgur.com/4YB41Dy.png">
-<meta property="og:image" content="https://i.imgur.com/somGl5W.png">
-<meta property="og:image" content="https://i.imgur.com/8wNo3J3.png">
-<meta property="og:image" content="https://i.imgur.com/nYeD9wx.png">
-<meta property="og:image" content="https://i.imgur.com/JHeh0YP.png">
-<meta property="og:image" content="https://i.imgur.com/E2QH902.png">
-<meta property="og:image" content="https://i.imgur.com/AKXUsjw.png">
-<meta property="og:image" content="https://i.imgur.com/XHUCeug.png">
-<meta property="og:image" content="https://i.imgur.com/2N5GsZn.png">
-<meta property="og:image" content="https://i.imgur.com/hPEYtBU.png">
-<meta property="og:image" content="https://i.imgur.com/qwzLozQ.png">
-<meta property="og:image" content="https://i.imgur.com/ykGowHk.png">
-<meta property="article:published_time" content="2023-07-08T06:19:18.000Z">
-<meta property="article:modified_time" content="2023-07-17T13:28:09.698Z">
+<meta property="og:image" content="https://i.imgur.com/WMYKRmE.png">
+<meta property="og:image" content="https://i.imgur.com/lLPvh6f.png">
+<meta property="og:image" content="https://i.imgur.com/zlOOwm1.png">
+<meta property="og:image" content="https://i.imgur.com/HzP58Af.png">
+<meta property="og:image" content="https://i.imgur.com/PrlPX3k.png">
+<meta property="og:image" content="https://i.imgur.com/871LMcK.png">
+<meta property="og:image" content="https://i.imgur.com/AzYOIMe.png">
+<meta property="article:published_time" content="2023-07-17T12:09:40.000Z">
+<meta property="article:modified_time" content="2023-07-17T13:28:08.331Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Airsim">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/Lfv9aNs.png">
+<meta name="twitter:image" content="https://i.imgur.com/WMYKRmE.png">
 
-<link rel="canonical" href="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/">
+<link rel="canonical" href="https://kura0913.github.io/2023/07/17/AirsimChangeCharacter/">
 
 
 <script id="page-configurations">
@@ -67,7 +55,7 @@
   };
 </script>
 
-  <title>架設AirSim環境及安裝AirSim Plugin | Kura's BLOG</title>
+  <title>Airsim更換Actor | Kura's BLOG</title>
   
 
 
@@ -222,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/">
+    <link itemprop="mainEntityOfPage" href="https://kura0913.github.io/2023/07/17/AirsimChangeCharacter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -235,7 +223,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          架設AirSim環境及安裝AirSim Plugin
+          Airsim更換Actor
         </h1>
 
         <div class="post-meta">
@@ -244,16 +232,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2023-07-08 14:19:18" itemprop="dateCreated datePublished" datetime="2023-07-08T14:19:18+08:00">2023-07-08</time>
+              <time title="創建時間：2023-07-17 20:09:40 / 修改時間：21:28:08" itemprop="dateCreated datePublished" datetime="2023-07-17T20:09:40+08:00">2023-07-17</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-07-17 21:28:09" itemprop="dateModified" datetime="2023-07-17T21:28:09+08:00">2023-07-17</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -264,7 +246,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unreal-Engine/Airsim%E7%92%B0%E5%A2%83%E6%9E%B6%E8%A8%AD/" itemprop="url" rel="index"><span itemprop="name">Airsim環境架設</span></a>
+                  <a href="/categories/Unreal-Engine/Airsim%E6%9B%B4%E6%8F%9BActor/" itemprop="url" rel="index"><span itemprop="name">Airsim更換Actor</span></a>
                 </span>
             </span>
 
@@ -279,74 +261,48 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h3><p>在安裝AirSim前，你必須完成Unreal Engine的安裝，安裝方式請看：<a href="https://kura0913.github.io/2023/07/07/UnrealEngineInstall/">Unreal Engine安裝</a></p>
+        <p>使用過AirSim之後，你是否感受到它的強大了呢?AirSim可以提供相當多元的輔助，在深度學習、機器學習方面尤其明顯</p>
 <span id="more"></span>
 
-<h3 id="安裝Git"><a href="#安裝Git" class="headerlink" title="安裝Git"></a>安裝Git</h3><p>至<a target="_blank" rel="noopener" href="https://git-scm.com/">Git官網</a>下載最新版的Git，並且一定要安裝 Git Bash 功能<br>(之後會再寫一篇安裝Git與Github連結設定的教學)</p>
-<h3 id="安裝-Visual-Studio-2022"><a href="#安裝-Visual-Studio-2022" class="headerlink" title="安裝 Visual Studio 2022"></a>安裝 Visual Studio 2022</h3><p>點擊<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hant/vs/">連結</a>下載 Visual Studio 2022，免費版請選擇Community版本</p>
-<p>安裝完成後，請安裝下圖中的組態</p>
-<div img-align="middle"><img src="https://i.imgur.com/Lfv9aNs.png" style="display:block; margin:auto;"/></div>
-<div img-align="middle"><img src="https://i.imgur.com/djB43zx.png" style="display:block; margin:auto;"/></div>
+<p>AirSim提供的功能固然好用，但是有時還是會有需要自己新增一些功能到Actor上面或是更換成自己設計的Actor，但是卻找不到從哪邊下手更改，因此本篇將會教你如何將自己設計的Actor與AirSim連接，以及更改AirSim提供的Actor，教學開始~</p>
+<p><strong>以下教學使用UE5作為示範</strong></p>
+<h3 id="前置準備"><a href="#前置準備" class="headerlink" title="前置準備"></a>前置準備</h3><p>很簡單，請先準備好一個已經安裝好AirSim Plugin的專案，如果還沒安裝的朋友，可以參考<a href="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/">此篇</a>，這邊就不贅述</p>
+<h3 id="找到Plugin資料夾"><a href="#找到Plugin資料夾" class="headerlink" title="找到Plugin資料夾"></a>找到Plugin資料夾</h3><p>首先，要找到名為Plugin的資料夾，預設情況下他是不會出現的，先打開Content Browser，右上角有個”Settings”，點開後會看到”Show Plugin Content”選項</p>
+<div img-align="middle"><img src="https://i.imgur.com/WMYKRmE.png" style="display:block; margin:auto;"/></div>
 
-<p>安裝完成後，可以點擊修改，檢查組態是否安裝完整，<strong>特別至個別元件檢查是否安裝到”Windows 10 SDK 10.0.19041”</strong></p>
-<div img-align="middle"><img src="https://i.imgur.com/53sE0E4.png" style="display:block; margin:auto;"/></div>
-<div img-align="middle"><img src="https://i.imgur.com/GFtMoZW.png" style="display:block; margin:auto;"/></div>
+<p>把他勾起來就可以看到”Plugin”的資料夾囉</p>
+<div img-align="middle"><img src="https://i.imgur.com/lLPvh6f.png" style="display:block; margin:auto;"/></div>
 
-<h3 id="安裝-AirSim"><a href="#安裝-AirSim" class="headerlink" title="安裝 AirSim"></a>安裝 AirSim</h3><p><strong>接下來的步驟相當繁瑣，請按照步驟安裝，否則會安裝失敗</strong></p>
-<p>操作流程可以參考<a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/build_windows/">官方文件</a></p>
-<p>根據安裝的引擎版本，請分別至對應的連結：<a target="_blank" rel="noopener" href="https://github.com/microsoft/AirSim">4.X.X</a>、<a target="_blank" rel="noopener" href="https://github.com/CodexLabsLLC/Colosseum">5.X.X</a></p>
-<p><strong>註：目前得知Unreal Engine 5.0.3無法成功安裝AirSim，UE5版本選擇請選擇5.1以上</strong></p>
-<p>接下來會以UE5的連結做示範，進到頁面後，先點選”Code”，然後複製網址</p>
-<div img-align="middle"><img src="https://i.imgur.com/YATy621.png" style="display:block; margin:auto;"/></div>
+<h3 id="為AirSim的Actor增加功能"><a href="#為AirSim的Actor增加功能" class="headerlink" title="為AirSim的Actor增加功能"></a>為AirSim的Actor增加功能</h3><p>打開”Plugin&#x2F;AirSim Content&#x2F;Blueprints”，你會看到一些藍圖，這邊會看到一些Blueprint檔案，這邊就是AirSim在模擬的時候會調用的檔案，這邊我們用”BP_FlyingPawn”示範，對要編輯的檔案點右鍵，”Duplicate”</p>
+<div img-align="middle"><img src="https://i.imgur.com/zlOOwm1.png" style="display:block; margin:auto;"/></div>
 
-<p>接下來到要安裝AirSim環境的資料夾，點選右鍵，Git Bash Here，<font color=#FF0000><strong>請注意，絕對不可以安裝在C槽，路徑要全英文</strong></font></p>
-<div img-align="middle"><img src="https://i.imgur.com/Ra6CBbo.png" style="display:block; margin:auto;"/></div>
+<p>重新命名完之後按存檔，打開剛剛複製的檔案，在這邊就可以加上自己想要的功能囉!</p>
+<div img-align="middle"><img src="https://i.imgur.com/HzP58Af.png" style="display:block; margin:auto;"/></div>
 
-<p>打上下列指令：<br>UE5:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/CodexLabsLLC/Colosseum.git</span><br></pre></td></tr></table></figure>
+<p>或許你會疑問，為甚麼要特別複製?不能直接對原本的檔案做修改嗎?<br><strong>答案是可以的</strong>，但為了確保在自製的過程中不會出差錯，這邊建議還是預留一份原檔在專案內，不然到時候出問題無法復原又要到別的地方翻檔案來補，顯得更麻煩</p>
+<h3 id="更換AirSim的Actor"><a href="#更換AirSim的Actor" class="headerlink" title="更換AirSim的Actor"></a>更換AirSim的Actor</h3><p>設計好自己專屬的Actor之後，接下來就是用AirSim來控制它，這邊就要去修改AirSim的設定檔，預設路徑為:C:\Users\user_name\Documents\AirSim，裡面會有一個”setting.json”的檔案，打開它，內容預設應該是如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;SeeDocsAt&quot;: &quot;https://github.com/Microsoft/AirSim/blob/master/docs/settings.md&quot;,</span><br><span class="line">  &quot;SettingsVersion&quot;: 1.2,</span><br><span class="line">  &quot;SimMode&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>UE4:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/microsoft/AirSim.git</span><br></pre></td></tr></table></figure>
-<p>看到下圖代表已經下載完成</p>
-<div img-align="middle"><img src="https://i.imgur.com/ZWQuZNR.png" style="display:block; margin:auto;"/></div>
+<p>我們可以在這個檔案裏面加入設定去更改AirSim執行時要使用的AirSim載具、相機大小、物理特性等等，以及本篇的核心，<strong>更換成自製的載具</strong></p>
+<p>我們需要將設定改成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;SeeDocsAt&quot;: &quot;https://github.com/Microsoft/AirSim/blob/master/docs/settings.md&quot;,</span><br><span class="line">  &quot;SettingsVersion&quot;: 1.2,</span><br><span class="line">  &quot;SimMode&quot;: &quot;Multirotor&quot;,</span><br><span class="line">  &quot;PawnPaths&quot;: &#123;</span><br><span class="line">    &quot;BareboneCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/Vehicle/VehicleAdvPawn.VehicleAdvPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/SUV/SuvCarPawn.SuvCarPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultQuadrotor&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_FlyingPawn.BP_FlyingPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultComputerVision&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_ComputerVisionPawn.BP_ComputerVisionPawn_C&#x27;&quot;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>開啟”Developer Command Prompt for VS 2022”，用”cd your_file_path”前往安裝AirSim環境的目錄下</p>
-<div img-align="middle"><img src="https://i.imgur.com/4YB41Dy.png" style="display:block; margin:auto;"/></div>
+<p>加上之後，接下來我們要知道你自己設計的Actor的相對路徑，你可以將屬標只在你的Actor上，就會看到它的Path</p>
+<div img-align="middle"><img src="https://i.imgur.com/PrlPX3k.png" style="display:block; margin:auto;"/></div>
 
-<h4 id="★"><a href="#★" class="headerlink" title="★"></a>★</h4><p>輸入”build”，等待它安裝，會需要一段時間</p>
-<div img-align="middle"><img src="https://i.imgur.com/somGl5W.png" style="display:block; margin:auto;"/></div>
+<p>在更改”setting.json”的時候，我們將SimMode改成”Multirotor”，意思是將模擬的載具設定成四軸無人機(Quadrotor)，因此我們要將對應的PawnPaths換掉，這邊我要換成的物件路徑是:</p>
+<p>&#x2F;AirSim&#x2F;Blueprints&#x2F;BP_DroneCharacter.<font color=#FF0000>BP_DroneCharacter_C</font></p>
+<p>其中紅色的部分是在生成的時候，你想讓該物件在地圖上叫甚麼名稱，就改在這邊</p>
+<p>將上面的路徑覆蓋掉”DefaultQuadrotor”的路徑變成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;SeeDocsAt&quot;: &quot;https://github.com/Microsoft/AirSim/blob/master/docs/settings.md&quot;,</span><br><span class="line">  &quot;SettingsVersion&quot;: 1.2,</span><br><span class="line">  &quot;SimMode&quot;: &quot;Multirotor&quot;,</span><br><span class="line">  &quot;PawnPaths&quot;: &#123;</span><br><span class="line">    &quot;BareboneCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/Vehicle/VehicleAdvPawn.VehicleAdvPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/SUV/SuvCarPawn.SuvCarPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultQuadrotor&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_DroneCharacter.BP_DroneCharacter_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultComputerVision&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_ComputerVisionPawn.BP_ComputerVisionPawn_C&#x27;&quot;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>看到顯示下圖字樣，代表建置完成</p>
-<div img-align="middle"><img src="https://i.imgur.com/8wNo3J3.png" style="display:block; margin:auto;"/></div>
+<p>改完之後按存檔，接著回到專案直接按”alt+p”開始模擬，模擬時如果想顯示滑鼠可以按”shift+F1”，看到右邊的Item Label，可以看到我們正在操作的是剛剛設定的物件</p>
+<div img-align="middle"><img src="https://i.imgur.com/871LMcK.png" style="display:block; margin:auto;"/></div>
 
-<p>接著，可以點擊資料夾目錄下的Unreal，會看到一個名叫”Plugins”的資料夾，在未來如果你的UE5(UE4)專案需要使用到AirSim，將此資料夾複製到該專案裡面，該專案就能使用AirSim Plugin</p>
-<div img-align="middle"><img src="https://i.imgur.com/nYeD9wx.png" style="display:block; margin:auto;"/></div>
+<p>你也可以點擊該物件右邊的藍字，前往該物件的Blueprint，進一步確認是否為你設定的物件</p>
+<div img-align="middle"><img src="https://i.imgur.com/AzYOIMe.png" style="display:block; margin:auto;"/></div>
 
-<p>接下來要來確認 AirSim 的環境是可以正常運作的，在與”Plugins”資料夾同一個目錄下，點選”Environments”，裡面有一個預設專案”Blocks”，內部已經安裝好了AirSim Plugin</p>
-<div img-align="middle"><img src="https://i.imgur.com/JHeh0YP.png" style="display:block; margin:auto;"/></div>
-
-<p>打開”Block”專案，查看是否有一個名叫”Blocks.sln”的檔案，如果沒有，可以對”Blocks.uproject”按右鍵，選擇”Generate Visual Studio project files”來生成”Blocks.sln”</p>
-<div img-align="middle"><img src="https://i.imgur.com/E2QH902.png" style="display:block; margin:auto;"/></div>
-
-<p>接下來，打開”Blocks.sln”，將偵錯模式改成”Development Editor”，再按執行</p>
-<div img-align="middle"><img src="https://i.imgur.com/AKXUsjw.png" style="display:block; margin:auto;"/></div>
-
-<p>你有可能會出現類似以下敘述的錯誤</p>
-<div img-align="middle"><img src="https://i.imgur.com/XHUCeug.png" style="display:block; margin:auto;"/></div>
-
-<p>這邊我嘗試了各種辦法，但還沒找到一個明確的解決方案，目前我認為是在建置的時候，發生了不明錯誤，造成檔案建置不完全，因此我們要再重新建置直到成功為止(重新做一次前面標★的地方)</p>
-<p>執行成功後，便會開啟專案</p>
-<div img-align="middle"><img src="https://i.imgur.com/2N5GsZn.png" style="display:block; margin:auto;"/></div>
-
-<p>進一步確定是否完整安裝，按下”Alt + p”或是綠色播放鍵，會顯示以下畫面：</p>
-<div img-align="middle"><img src="https://i.imgur.com/hPEYtBU.png" style="display:block; margin:auto;"/></div>
-
-<p>這邊是在詢問要使用哪種交通工具進行模擬，AirSim內建提供了 Car 以及 Multirotor 可以選擇，點選”Yes”會使用 Car 來模擬，點選”No”會使用 Multirotor 來模擬，兩個都選選看是否能正常運作，如果能正常執行沒有報錯的話，代表安裝成功啦~</p>
-<p>Multirotor模擬畫面</p>
-<div img-align="middle"><img src="https://i.imgur.com/qwzLozQ.png" style="display:block; margin:auto;"/></div>
-
-<p>Car模擬畫面</p>
-<div img-align="middle"><img src="https://i.imgur.com/ykGowHk.png" style="display:block; margin:auto;"/></div>
+<p>以上就是這次的教學，如果你對於”setting.json”內部還有哪些設定感興趣，可以參考<a target="_blank" rel="noopener" href="https://github.com/microsoft/AirSim/blob/main/docs/settings.md">此連結</a></p>
 
     </div>
 
@@ -366,13 +322,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/07/07/UnrealEngineInstall/" rel="prev" title="Unreal Engine安裝">
-      <i class="fa fa-chevron-left"></i> Unreal Engine安裝
+    <a href="/2023/07/11/UnrealEngineMaterialColor/" rel="prev" title="Unreal Engine 調整Material的顏色">
+      <i class="fa fa-chevron-left"></i> Unreal Engine 調整Material的顏色
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/07/11/UnrealEngineMaterialColor/" rel="next" title="Unreal Engine 調整Material的顏色">
-      Unreal Engine 調整Material的顏色 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -431,7 +384,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DGit"><span class="nav-number">2.</span> <span class="nav-text">安裝Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Visual-Studio-2022"><span class="nav-number">3.</span> <span class="nav-text">安裝 Visual Studio 2022</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-AirSim"><span class="nav-number">4.</span> <span class="nav-text">安裝 AirSim</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">4.1.</span> <span class="nav-text">★</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E6%BA%96%E5%82%99"><span class="nav-number">1.</span> <span class="nav-text">前置準備</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0Plugin%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">2.</span> <span class="nav-text">找到Plugin資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BAAirSim%E7%9A%84Actor%E5%A2%9E%E5%8A%A0%E5%8A%9F%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">為AirSim的Actor增加功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8F%9BAirSim%E7%9A%84Actor"><span class="nav-number">4.</span> <span class="nav-text">更換AirSim的Actor</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
