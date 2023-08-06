@@ -20,25 +20,18 @@
     var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="哈囉，這篇文章會為各位帶來一些Unreal Engine的設定，這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章，那麼話不多說，馬上開始!!">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Unreal Engine細節設定">
-<meta property="og:url" content="https://kura0913.github.io/2023/07/20/UnrealEngineSetting/index.html">
+  <meta name="description" content="工程師要學的東西實在太多了，學多就容易忘記，趁自己還記得的時候做成筆記，之後有需要的時候就能快速找到解法">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kura&#39;s BLOG">
+<meta property="og:url" content="https://kura0913.github.io/archives/2023/08/index.html">
 <meta property="og:site_name" content="Kura&#39;s BLOG">
-<meta property="og:description" content="哈囉，這篇文章會為各位帶來一些Unreal Engine的設定，這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章，那麼話不多說，馬上開始!!">
+<meta property="og:description" content="工程師要學的東西實在太多了，學多就容易忘記，趁自己還記得的時候做成筆記，之後有需要的時候就能快速找到解法">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1TtBKl7NwzK88VwEyf_adhqHQrS3ZBxNM&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1qe1SWjriq0ColxU3Ddgd3fd9LYVmiQf4&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1rVr794JVVi_TdZU32Na6jtWgSRTP7QQW&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=152vJ413QQIveqU6XXLNKHHg3QGIGTRR5&export=download">
-<meta property="article:published_time" content="2023-07-20T12:09:05.000Z">
-<meta property="article:modified_time" content="2023-07-30T06:36:29.260Z">
 <meta property="article:author" content="Kura Huang">
-<meta property="article:tag" content="Unreal Engine">
+<meta property="article:tag" content="Kura,Unreal,UE4,UE5,AirSim,UE4安裝教學,UE5安裝教學,AirSim安裝教學,Kura部落格">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://drive.google.com/u/2/uc?id=1TtBKl7NwzK88VwEyf_adhqHQrS3ZBxNM&export=download">
 
-<link rel="canonical" href="https://kura0913.github.io/2023/07/20/UnrealEngineSetting/">
+<link rel="canonical" href="https://kura0913.github.io/archives/2023/08/">
 
 
 <script id="page-configurations">
@@ -46,12 +39,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>Unreal Engine細節設定 | Kura's BLOG</title>
+  <title>歸檔 | Kura's BLOG</title>
   
 
 
@@ -199,114 +192,50 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kura0913.github.io/2023/07/20/UnrealEngineSetting/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="Kura Huang">
-      <meta itemprop="description" content="工程師要學的東西實在太多了，學多就容易忘記，趁自己還記得的時候做成筆記，之後有需要的時候就能快速找到解法">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kura's BLOG">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Unreal Engine細節設定
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2023-07-20 20:09:05" itemprop="dateCreated datePublished" datetime="2023-07-20T20:09:05+08:00">2023-07-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-07-30 14:36:29" itemprop="dateModified" datetime="2023-07-30T14:36:29+08:00">2023-07-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unreal-Engine/" itemprop="url" rel="index"><span itemprop="name">Unreal Engine</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unreal-Engine/Unreal-Engine-%E8%A8%AD%E5%AE%9A%E7%9B%B8%E9%97%9C/" itemprop="url" rel="index"><span itemprop="name">Unreal Engine 設定相關</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共有 6 篇文章。 繼續努力。</span>
+      </div>
 
       
-        <p>哈囉，這篇文章會為各位帶來一些Unreal Engine的設定，這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章，那麼話不多說，馬上開始!!</p>
-<span id="more"></span>
-
-
-<h3 id="Visual-Studio版本更改"><a href="#Visual-Studio版本更改" class="headerlink" title="Visual Studio版本更改"></a>Visual Studio版本更改</h3><p>有些人使用的Visual Studio版本或許不是2022的版本，或是使用其他的編譯器，但又不想重新下載，其實是有解決辦法的，點擊左上角<br>Edit-&gt;Editor Preferences-&gt;General-&gt;Source code， 會看到”Source Code Editor”，點開來改成自己想使用的編譯器就行了</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1TtBKl7NwzK88VwEyf_adhqHQrS3ZBxNM&export=download"></p>
-<h3 id="解決切換畫面後，畫面卡頓問題"><a href="#解決切換畫面後，畫面卡頓問題" class="headerlink" title="解決切換畫面後，畫面卡頓問題"></a>解決切換畫面後，畫面卡頓問題</h3><p>在模擬的時候常常會畫面切來切去，但只要一點到Unreal以外的視窗，模擬的畫面就會非常卡頓，這時可以透過更改設定來解決，<br>Edit-&gt;Editor Preferences-&gt;General-&gt;Performance，把”Use Less CPU when in Background”取消掉，就可以解決這個問題</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1qe1SWjriq0ColxU3Ddgd3fd9LYVmiQf4&export=download"></p>
-<h3 id="打包地圖缺失"><a href="#打包地圖缺失" class="headerlink" title="打包地圖缺失"></a>打包地圖缺失</h3><p>打包地圖的時候，可能會遇到地圖只打包了你正在使用的地圖，或是預設地圖，此時就要透過設定來修改打包的目標，<strong>建議每次的打包，都要執行接下來的設定</strong><br>Edit-&gt;Project Settings-&gt;Project-&gt;Maps &amp; Modes，下方有個”Default Maps”的設定，建議將Editor Startup Map和Game Default Map都換成執行檔開啟執行時，第一張要執行的地圖</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1rVr794JVVi_TdZU32Na6jtWgSRTP7QQW&export=download"></p>
-<p>接著，到Project-&gt;Packaging-&gt;Packaging-&gt;Advanced，有一個”List of maps to include in a packaged build”的選項，點擊”加號”之後，到專案的資料夾下找出想打包的地圖，有幾張就加幾張</p>
-<p><img src="https://drive.google.com/u/2/uc?id=152vJ413QQIveqU6XXLNKHHg3QGIGTRR5&export=download"></p>
-<p>這樣打包時就會把在List裡的地圖通通打包進去囉</p>
-
+    <div class="collection-year">
+      <span class="collection-header">2023</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Unreal-Engine/" rel="tag"># Unreal Engine</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2023-08-06T13:11:05+08:00"
+              content="2023-08-06">
+          08-06
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/2023/08/06/CreateNewProject/" itemprop="url">
+            <span itemprop="name">Unreal Engine創建新專案</span>
+          </a>
+      </div>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2023/07/17/AirsimChangeCharacter/" rel="prev" title="Airsim更換Actor">
-      <i class="fa fa-chevron-left"></i> Airsim更換Actor
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/08/06/CreateNewProject/" rel="next" title="Unreal Engine創建新專案">
-      Unreal Engine創建新專案 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -359,7 +288,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-Studio%E7%89%88%E6%9C%AC%E6%9B%B4%E6%94%B9"><span class="nav-number">1.</span> <span class="nav-text">Visual Studio版本更改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E5%88%87%E6%8F%9B%E7%95%AB%E9%9D%A2%E5%BE%8C%EF%BC%8C%E7%95%AB%E9%9D%A2%E5%8D%A1%E9%A0%93%E5%95%8F%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">解決切換畫面後，畫面卡頓問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%9C%B0%E5%9C%96%E7%BC%BA%E5%A4%B1"><span class="nav-number">3.</span> <span class="nav-text">打包地圖缺失</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
