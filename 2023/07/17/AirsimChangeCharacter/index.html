@@ -27,20 +27,20 @@
 <meta property="og:site_name" content="Kura&#39;s BLOG">
 <meta property="og:description" content="使用過AirSim之後，你是否感受到它的強大了呢?AirSim可以提供相當多元的輔助，在深度學習、機器學習方面尤其明顯。AirSim提供的功能固然好用，但是有時還是會有需要自己新增一些功能到Actor上面或是更換成自己設計的Actor，但是卻找不到從哪邊下手更改，因此本篇將會教你如何將自己設計的Actor與AirSim連接，以及更改AirSim提供的Actor，教學開始~">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1mDBfTmgX5OaTlWoinxj551an988YiSwH&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1iaIfzivMcLixa_ow01uM3oeP5mGdI0cW&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=11TsGbCjnaQwjnJguX4NMdyEJ8IsHulNE&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1Ejqu4nLBtK6ou_bYMLIgGP0a-wD_lnsn&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1vT_iStlB-BnZt6-fg4tzQqjUjgWlZkjR&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1PtYyfS6miv-HXwwDtRJQuN8W7wzKby4r&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1CVYJ8MghVZKklDAgdA42Fr76cV2Ap-yo&export=download">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/findPlugin_1.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/findPlugin_2.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/EditAirSimActor_1.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/EditAirSimActor_2.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/ChangeActor_1.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/ChangeActor_2.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/ChangeActor_3.png?raw=true">
 <meta property="article:published_time" content="2023-07-17T12:09:40.000Z">
-<meta property="article:modified_time" content="2023-08-06T06:36:25.642Z">
+<meta property="article:modified_time" content="2024-02-03T06:57:47.311Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Airsim">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://drive.google.com/u/2/uc?id=1mDBfTmgX5OaTlWoinxj551an988YiSwH&export=download">
+<meta name="twitter:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/findPlugin_1.png?raw=true">
 
 <link rel="canonical" href="https://kura0913.github.io/2023/07/17/AirsimChangeCharacter/">
 
@@ -240,7 +240,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-08-06 14:36:25" itemprop="dateModified" datetime="2023-08-06T14:36:25+08:00">2023-08-06</time>
+                <time title="修改時間：2024-02-03 14:57:47" itemprop="dateModified" datetime="2024-02-03T14:57:47+08:00">2024-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,13 +273,13 @@
 <p><strong>以下教學使用UE5作為示範</strong></p>
 <h3 id="前置準備"><a href="#前置準備" class="headerlink" title="前置準備"></a>前置準備</h3><p>很簡單，請先準備好一個已經安裝好AirSim Plugin的專案，還沒安裝的朋友，可以參考<a href="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/">此篇</a>，這邊就不贅述</p>
 <h3 id="找到Plugin資料夾"><a href="#找到Plugin資料夾" class="headerlink" title="找到Plugin資料夾"></a>找到Plugin資料夾</h3><p>首先，要找到名為Plugin的資料夾，預設情況下是不會出現的，先打開Content Browser，右上角有個”Settings”，點開後會看到”Show Plugin Content”選項</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1mDBfTmgX5OaTlWoinxj551an988YiSwH&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/findPlugin_1.png?raw=true"></p>
 <p>把他勾起來就可以看到”Plugin”的資料夾囉</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1iaIfzivMcLixa_ow01uM3oeP5mGdI0cW&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/findPlugin_2.png?raw=true"></p>
 <h3 id="為AirSim的Actor增加功能"><a href="#為AirSim的Actor增加功能" class="headerlink" title="為AirSim的Actor增加功能"></a>為AirSim的Actor增加功能</h3><p>打開”Plugin&#x2F;AirSim Content&#x2F;Blueprints”，這邊會看到一些Blueprint檔案，這些就是AirSim在模擬的時候會調用的檔案，我們用”BP_FlyingPawn”示範，對要編輯的檔案點右鍵，”Duplicate”</p>
-<p><img src="https://drive.google.com/u/2/uc?id=11TsGbCjnaQwjnJguX4NMdyEJ8IsHulNE&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/EditAirSimActor_1.png?raw=true"></p>
 <p>重新命名完之後按存檔，打開剛剛複製的檔案，在這邊就可以加上自己想要的功能囉!</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1Ejqu4nLBtK6ou_bYMLIgGP0a-wD_lnsn&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/EditAirSimActor_2.png?raw=true"></p>
 <p>或許你會疑問，為甚麼要特別複製?不能直接對原本的檔案做修改嗎?<br><strong>答案是可以的</strong>，但為了確保在自製的過程中不會出差錯，這邊建議還是預留一份原檔在專案內，不然到時候出問題無法復原又要到別的地方翻檔案來補，顯得更麻煩</p>
 <h3 id="更換AirSim的Actor"><a href="#更換AirSim的Actor" class="headerlink" title="更換AirSim的Actor"></a>更換AirSim的Actor</h3><p>設計好自己專屬的Actor之後，接下來就是用AirSim來控制它，這邊就要去修改AirSim的設定檔，預設路徑為:C:\Users\user_name\Documents\AirSim，裡面會有一個”setting.json”的檔案，打開它，內容預設應該是如下:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;SeeDocsAt&quot;: &quot;https://github.com/Microsoft/AirSim/blob/master/docs/settings.md&quot;,</span><br><span class="line">  &quot;SettingsVersion&quot;: 1.2,</span><br><span class="line">  &quot;SimMode&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -289,7 +289,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;SeeDocsAt&quot;: &quot;https://github.com/Microsoft/AirSim/blob/master/docs/settings.md&quot;,</span><br><span class="line">  &quot;SettingsVersion&quot;: 1.2,</span><br><span class="line">  &quot;SimMode&quot;: &quot;Multirotor&quot;,</span><br><span class="line">  &quot;PawnPaths&quot;: &#123;</span><br><span class="line">    &quot;BareboneCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/Vehicle/VehicleAdvPawn.VehicleAdvPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/SUV/SuvCarPawn.SuvCarPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultQuadrotor&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_FlyingPawn.BP_FlyingPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultComputerVision&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_ComputerVisionPawn.BP_ComputerVisionPawn_C&#x27;&quot;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>加上之後，接下來我們要知道你自己設計的Actor的相對路徑，你可以將屬標只在你的Actor上，就會看到它的Path</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1vT_iStlB-BnZt6-fg4tzQqjUjgWlZkjR&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/ChangeActor_1.png?raw=true"></p>
 <p>在更改”setting.json”的時候，我們將SimMode改成”Multirotor”，意思是將模擬的載具設定成四軸無人機(Quadrotor)，因此我們要將對應的PawnPaths換掉，這邊我要換成的物件路徑是:</p>
 <p>&#x2F;AirSim&#x2F;Blueprints&#x2F;BP_DroneCharacter.<font color=#FF0000>BP_DroneCharacter_C</font></p>
 <p>其中紅色的部分是在生成的時候，你想讓該物件在地圖上叫甚麼名稱，就改在這邊</p>
@@ -297,9 +297,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;SeeDocsAt&quot;: &quot;https://github.com/Microsoft/AirSim/blob/master/docs/settings.md&quot;,</span><br><span class="line">  &quot;SettingsVersion&quot;: 1.2,</span><br><span class="line">  &quot;SimMode&quot;: &quot;Multirotor&quot;,</span><br><span class="line">  &quot;PawnPaths&quot;: &#123;</span><br><span class="line">    &quot;BareboneCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/Vehicle/VehicleAdvPawn.VehicleAdvPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultCar&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/VehicleAdv/SUV/SuvCarPawn.SuvCarPawn_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultQuadrotor&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_DroneCharacter.BP_DroneCharacter_C&#x27;&quot;&#125;,</span><br><span class="line">    &quot;DefaultComputerVision&quot;: &#123;&quot;PawnBP&quot;: &quot;Class&#x27;/AirSim/Blueprints/BP_ComputerVisionPawn.BP_ComputerVisionPawn_C&#x27;&quot;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>改完之後按存檔，接著回到專案直接按”alt+p”開始模擬，模擬時如果想顯示滑鼠可以按”shift+F1”，看到右邊的Item Label，可以看到我們正在操作的是剛剛設定的物件</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1PtYyfS6miv-HXwwDtRJQuN8W7wzKby4r&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/ChangeActor_2.png?raw=true"></p>
 <p>你也可以點擊該物件右邊的藍字，前往該物件的Blueprint，進一步確認是否為你設定的物件</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1CVYJ8MghVZKklDAgdA42Fr76cV2Ap-yo&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirsimChangeCharacter/ChangeActor_3.png?raw=true"></p>
 <p>以上就是這次的教學，如果你對於”setting.json”內部還有哪些設定感興趣，可以參考<a target="_blank" rel="noopener" href="https://github.com/microsoft/AirSim/blob/main/docs/settings.md">此連結</a></p>
 
     </div>

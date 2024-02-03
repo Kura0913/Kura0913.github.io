@@ -27,21 +27,21 @@
 <meta property="og:site_name" content="Kura&#39;s BLOG">
 <meta property="og:description" content="GPU Lightmass(GPULM)插件是一個 light-baking的解決方案，可預先計算移動性設定為「固定」或「靜態」的燈光的複雜光影，並將該資料儲存在應用於場景幾何體的產生的光照貼圖紋理中。GPULM 顯著減少了計算、建構和產生複雜場景的照明資料所需的時間，其速度與使用 Swarm 和基於 CPU 的 Lightmass 的分散式建構相當，是一個相當利於開發的工具，接下來便開始GPUL">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1B0Xn04pM7QgpNG4G03GywsvZY0ziOR-I&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1_fGuE34r1F3FpRjXOQmprUWvExFJ5K7z&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1Grff5Q2EJdQTydrWRxJuoBh39dq5Vw5z&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1n5JTpVyF3k2UxO0-yNlo14sUSNdW1ot5&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1G5ipwHxpwXPwIk8rA07zsTiHWKzCramY&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1WTL4feah7EP7eglIJRou80KypacxCrwX&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1wBTb17oYaEa2Md_xrYYddZy0BxEbN51B&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1e6lTnvj2_f9tNL8nwtMwNb_NA_DnmMx-&export=download">
-<meta property="og:image" content="https://drive.google.com/u/2/uc?id=1q4wpjd9YItMzGW-2WAuJqdRBNk0LJfOS&export=download">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/1.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/2.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/3.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/4.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/5.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/6.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/7.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/8.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/9.png?raw=true">
 <meta property="article:published_time" content="2023-09-21T12:58:45.000Z">
-<meta property="article:modified_time" content="2023-09-23T06:14:29.263Z">
+<meta property="article:modified_time" content="2024-02-03T07:01:09.794Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://drive.google.com/u/2/uc?id=1B0Xn04pM7QgpNG4G03GywsvZY0ziOR-I&export=download">
+<meta name="twitter:image" content="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/1.png?raw=true">
 
 <link rel="canonical" href="https://kura0913.github.io/2023/09/21/GPULightmass/">
 
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-09-23 14:14:29" itemprop="dateModified" datetime="2023-09-23T14:14:29+08:00">2023-09-23</time>
+                <time title="修改時間：2024-02-03 15:01:09" itemprop="dateModified" datetime="2024-02-03T15:01:09+08:00">2024-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,28 +272,28 @@
 <span id="more"></span>
 
 <h3 id="啟用插件"><a href="#啟用插件" class="headerlink" title="啟用插件"></a>啟用插件</h3><p>打開想要增加此功能的專案，點選 Edit -&gt; Plugin </p>
-<p><img src="https://drive.google.com/u/2/uc?id=1B0Xn04pM7QgpNG4G03GywsvZY0ziOR-I&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/1.png?raw=true"></p>
 <p>在搜尋欄打GPU，找到GPU Lightmass，左邊勾選啟用插件，接下來會要求重啟專案，依照指示重啟</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1_fGuE34r1F3FpRjXOQmprUWvExFJ5K7z&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/2.png?raw=true"></p>
 <p>重啟過後插件便已經安裝完成</p>
 <h3 id="專案設定"><a href="#專案設定" class="headerlink" title="專案設定"></a>專案設定</h3><p>接下來必須做一些設定讓GPULM可以順利啟用，點選 Edit -&gt; Project settings</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1Grff5Q2EJdQTydrWRxJuoBh39dq5Vw5z&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/3.png?raw=true"></p>
 <p>Engine -&gt; Rendering -&gt; Hardware Ray Tracing，依照圖中的設定勾選 </p>
-<p><img src="https://drive.google.com/u/2/uc?id=1n5JTpVyF3k2UxO0-yNlo14sUSNdW1ot5&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/4.png?raw=true"></p>
 <p>Engine -&gt; Rendering -&gt; Virtual Texture，依照圖中的設定勾選</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1G5ipwHxpwXPwIk8rA07zsTiHWKzCramY&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/5.png?raw=true"></p>
 <p>完成設定後，依照指示重啟專案</p>
 <h3 id="更改系統配置"><a href="#更改系統配置" class="headerlink" title="更改系統配置"></a>更改系統配置</h3><p>GPU執行命令時間過長時，Windows會認為顯示卡已經崩潰，並會重置驅動程序，導致引擎關閉。為了避免此情況，透過變更 Windows 登錄中的逾時偵測和復原 (TDR) 時間，可以增加 Windows 偵測到 GPU 逾時所需的時間。</p>
 <p>按Win + R 開啟執行，輸入”regedit”開啟登錄編輯程式，導覽至類別:Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers</p>
 <p>查看是否有名為”TdrDelay”的變數，沒有則空白處點擊右鍵，新增 -&gt; DWORD(32-位元)值，將名稱命名為:TdrDelay</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1WTL4feah7EP7eglIJRou80KypacxCrwX&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/6.png?raw=true"></p>
 <p>建立完成後點擊兩下開啟”TdrDelay”，選擇10進位，數值資料輸入60(可自行調整)，完成後按確定</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1wBTb17oYaEa2Md_xrYYddZy0BxEbN51B&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/7.png?raw=true"></p>
 <p>這樣就能防止Unreal Engine在使用該插件時，因為執行的時間過長而導致關閉，若因為專案地圖過大，建置時間拉長還是發生了關閉的狀況，把TdrDelay的時間拉長即可</p>
 <h3 id="使用-GPU-Lightmass"><a href="#使用-GPU-Lightmass" class="headerlink" title="使用 GPU Lightmass"></a>使用 GPU Lightmass</h3><p>完成設定後就能正常使用GPULM，打開專案，Build -&gt; GPU Lightmass</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1e6lTnvj2_f9tNL8nwtMwNb_NA_DnmMx-&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/8.png?raw=true"></p>
 <p>點選左上方的Build Lighting就會開始建置光影，而下方的設定則可以參考<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/RayTracing/MovieRenderQueue/#systemconfiguration_optionalbutrecommended_">官方文件</a>來依據需求做調整</p>
-<p><img src="https://drive.google.com/u/2/uc?id=1q4wpjd9YItMzGW-2WAuJqdRBNk0LJfOS&export=download"></p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/GPULightmass/9.png?raw=true"></p>
 
     </div>
 
