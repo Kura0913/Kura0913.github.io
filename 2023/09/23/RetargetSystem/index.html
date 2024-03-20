@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/17.png?raw=true">
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/18.png?raw=true">
 <meta property="article:published_time" content="2023-09-23T05:59:48.000Z">
-<meta property="article:modified_time" content="2024-03-20T05:42:32.711Z">
+<meta property="article:modified_time" content="2024-03-20T07:12:49.283Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Retarget System">
@@ -251,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-03-20 13:42:32" itemprop="dateModified" datetime="2024-03-20T13:42:32+08:00">2024-03-20</time>
+                <time title="修改時間：2024-03-20 15:12:49" itemprop="dateModified" datetime="2024-03-20T15:12:49+08:00">2024-03-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,9 +278,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用</p>
 <span id="more"></span>
-<h3 id="匯入模型"><a href="#匯入模型" class="headerlink" title="匯入模型"></a>匯入模型</h3><p>網路上免費的模型資源少之又少，但好險有Adobe的<a target="_blank" rel="noopener" href="https://www.mixamo.com/#/?page=1&type=Character">Mixamo</a>，提供了許多免費的模型與動畫<br>這邊先下載好一個模型及動畫後，開啟專案，到達要匯入的資料夾後，點選左上角的”import”，將要匯入的FBX檔全部選取</p>
+<h1 id="匯入模型"><a href="#匯入模型" class="headerlink" title="匯入模型"></a>匯入模型</h1><p>網路上免費的模型資源少之又少，但好險有Adobe的<a target="_blank" rel="noopener" href="https://www.mixamo.com/#/?page=1&type=Character">Mixamo</a>，提供了許多免費的模型與動畫<br>這邊先下載好一個模型及動畫後，開啟專案，到達要匯入的資料夾後，點選左上角的”import”，將要匯入的FBX檔全部選取</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/1.png?raw=true"></p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/2.png?raw=true"></p>
 <p>接下來會跳出以下視窗，請注意<strong>一定要勾選”Import Animation”動畫才會匯入</strong>，確認完之後選擇”Import All”</p>
@@ -291,8 +291,8 @@
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/5.png?raw=true"></p>
 <p>匯入完成後就會出現很多動畫檔了，將全部的檔案儲存</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/6.png?raw=true"></p>
-<h3 id="Retarget-System"><a href="#Retarget-System" class="headerlink" title="Retarget System"></a>Retarget System</h3><p>接下來就要使用Retarget System將兩個不同的骨架動畫做對接</p>
-<h4 id="Set-IK-Rig"><a href="#Set-IK-Rig" class="headerlink" title="Set IK Rig"></a>Set IK Rig</h4><h5 id="★"><a href="#★" class="headerlink" title="★"></a>★</h5><p>資料夾空白處右鍵：Animation -&gt; IK Rig -&gt; IK Rig，建立完檔案後打開</p>
+<h1 id="Retarget-System"><a href="#Retarget-System" class="headerlink" title="Retarget System"></a>Retarget System</h1><p>接下來就要使用Retarget System將兩個不同的骨架動畫做對接</p>
+<h2 id="Set-IK-Rig"><a href="#Set-IK-Rig" class="headerlink" title="Set IK Rig"></a>Set IK Rig</h2><h3 id="★"><a href="#★" class="headerlink" title="★"></a>★</h3><p>資料夾空白處右鍵：Animation -&gt; IK Rig -&gt; IK Rig，建立完檔案後打開</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/7.png?raw=true"></p>
 <p>右邊欄有個Preview Skeleton，選擇想要對接的骨架</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/8.png?raw=true"><br><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/9.png?raw=true"></p>
@@ -305,7 +305,7 @@
 <p>這邊就依照自己的規劃去設定部位</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/13.png?raw=true"></p>
 <p>設定完成後儲存，接下來到另一個要對接的骨架，從★開始做一樣的動作，請注意<strong>作為Root的骨格部位請選擇相同部位，骨格名稱不一定會相同，請透過視覺判斷</strong>，而部位的名稱建議設定一樣，到時候在對接的時候才比較好設定</p>
-<h4 id="IK-Retargeter"><a href="#IK-Retargeter" class="headerlink" title="IK Retargeter"></a>IK Retargeter</h4><p>資料夾空白處右鍵：Animation -&gt; IK Rig -&gt; IK Retargeter，建立完檔案後打開</p>
+<h2 id="IK-Retargeter"><a href="#IK-Retargeter" class="headerlink" title="IK Retargeter"></a>IK Retargeter</h2><p>資料夾空白處右鍵：Animation -&gt; IK Rig -&gt; IK Retargeter，建立完檔案後打開</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/14.png?raw=true"></p>
 <p>右邊可以選擇Source IKRig跟Target IKRig(途中的A和B)，這邊設定時要搞清楚對象，這邊設定的意思是<strong>要將A骨架的動畫檔案輸出成B骨架可使用的動畫檔案</strong></p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/15.png?raw=true"></p>
@@ -337,7 +337,10 @@
     <a href="/2023/09/21/GPULightmass/" rel="prev" title="Unreal Engine：GPU Lightmass 全域照明">
       <i class="fa fa-chevron-left"></i> Unreal Engine：GPU Lightmass 全域照明
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/20/AirSimAPI/" rel="next" title="AirSimAPI">
+      AirSimAPI <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -396,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%AF%E5%85%A5%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">匯入模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retarget-System"><span class="nav-number">3.</span> <span class="nav-text">Retarget System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-IK-Rig"><span class="nav-number">3.1.</span> <span class="nav-text">Set IK Rig</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">3.1.1.</span> <span class="nav-text">★</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IK-Retargeter"><span class="nav-number">3.2.</span> <span class="nav-text">IK Retargeter</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%AF%E5%85%A5%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">匯入模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Retarget-System"><span class="nav-number">3.</span> <span class="nav-text">Retarget System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-IK-Rig"><span class="nav-number">3.1.</span> <span class="nav-text">Set IK Rig</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">3.1.1.</span> <span class="nav-text">★</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IK-Retargeter"><span class="nav-number">3.2.</span> <span class="nav-text">IK Retargeter</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -412,14 +415,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
