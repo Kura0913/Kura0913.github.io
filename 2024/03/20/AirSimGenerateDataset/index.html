@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="前言之前接觸到object detection相關的研究，在過程中遇到Dataset不足的問題，因此教授想嘗試看看使用VR環境來產生Dataset來補足資料，並驗證看看對於最後真實資料的detection是否有幫助 而我就負責製作Dataset的生成工具，此篇紀錄我是如何生成VR Dataset 環境配置 Unreal Engine 5 Python 3.9 numpy 1.21.6 AirSim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AirSimGenerateDataset">
+<meta property="og:url" content="https://kura0913.github.io/2024/03/20/AirSimGenerateDataset/index.html">
+<meta property="og:site_name" content="Kura&#39;s BLOG">
+<meta property="og:description" content="前言之前接觸到object detection相關的研究，在過程中遇到Dataset不足的問題，因此教授想嘗試看看使用VR環境來產生Dataset來補足資料，並驗證看看對於最後真實資料的detection是否有幫助 而我就負責製作Dataset的生成工具，此篇紀錄我是如何生成VR Dataset 環境配置 Unreal Engine 5 Python 3.9 numpy 1.21.6 AirSim">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/findbbox.png?raw=true">
+<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/bbox.jpg?raw=true">
+<meta property="article:published_time" content="2024-03-20T06:34:59.000Z">
+<meta property="article:modified_time" content="2024-03-20T13:53:44.725Z">
+<meta property="article:author" content="Kura Huang">
+<meta property="article:tag" content="Unreal Engine">
+<meta property="article:tag" content="Airsim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/findbbox.png?raw=true">
+
+<link rel="canonical" href="https://kura0913.github.io/2024/03/20/AirSimGenerateDataset/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>AirSimGenerateDataset | Kura's BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Kura's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">程式開發</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>網站地圖</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://kura0913.github.io/2024/03/20/AirSimGenerateDataset/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Kura Huang">
+      <meta itemprop="description" content="工程師要學的東西實在太多了，學多就容易忘記，趁自己還記得的時候做成筆記，之後有需要的時候就能快速找到解法">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kura's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AirSimGenerateDataset
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2024-03-20 14:34:59 / 修改時間：21:53:44" itemprop="dateCreated datePublished" datetime="2024-03-20T14:34:59+08:00">2024-03-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unreal-Engine/" itemprop="url" rel="index"><span itemprop="name">Unreal Engine</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unreal-Engine/Airsim/" itemprop="url" rel="index"><span itemprop="name">Airsim</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unreal-Engine/Airsim/Generate-VR-Dataset/" itemprop="url" rel="index"><span itemprop="name">Generate VR Dataset</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前接觸到object detection相關的研究，在過程中遇到Dataset不足的問題，因此教授想嘗試看看使用VR環境來產生Dataset來補足資料，並驗證看看對於最後真實資料的detection是否有幫助</p>
+<p>而我就負責製作Dataset的生成工具，此篇紀錄我是如何生成VR Dataset</p>
+<h1 id="環境配置"><a href="#環境配置" class="headerlink" title="環境配置"></a>環境配置</h1><ul>
+<li>Unreal Engine 5</li>
+<li>Python 3.9</li>
+<li>numpy 1.21.6</li>
+<li>AirSim API</li>
+<li>wheel 0.42.0</li>
+<li>opencv-python</li>
+</ul>
+<p>上述的環境配置、安裝可以參考以下文章：</p>
+<ul>
+<li><p><a href="https://kura0913.github.io/2023/07/07/UnrealEngineInstall/">Unreal Engine install</a></p>
+</li>
+<li><p><a href="https://kura0913.github.io/2023/07/08/InstallAirSimPlugin/">AirSim Plugin install</a></p>
+</li>
+<li><p><a href="https://kura0913.github.io/2023/07/07/UnrealEngineInstall/">AirSIm API install</a></p>
+</li>
+</ul>
+<h1 id="過程"><a href="#過程" class="headerlink" title="過程"></a>過程</h1><h2 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h2><p>由於實驗室使用yolo做訓練，因此生成的資料格式會以yolo格式為主</p>
+<p>AirSim其實本身有提供生成2D bounding box的API，背後的演算法是由3D bounding box轉換而來，然而AirSim的3D bounding box其實是有歪斜的問題，因此最後得到的2D bounding box會有過大的問題</p>
+<p>就上述的原因，必須換另一種作法，這邊我想利用egmentation mask作為輔助，透過mask來找到物體的邊界，再依照邊界畫出bounding box</p>
+<h2 id="設定生成Classes"><a href="#設定生成Classes" class="headerlink" title="設定生成Classes"></a>設定生成Classes</h2><p>首先要標記生成的Classes，可以使用下列的code來獲取classes對應的actor</p>
+<p>其中 <strong>{object_name}[\w]*</strong> 的意思是，在level中所有以 <strong>object_name</strong> 為開頭的Actor、Mesh，都會被標記為該class，因此在為level中的物件取名字的時候，務必做好規劃</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> airsim</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">client = airsim.VehicleClient()</span><br><span class="line"></span><br><span class="line">objects = client.simListSceneObjects(<span class="string">f&#x27;<span class="subst">&#123;object_name&#125;</span>[\w]*&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>接下來要為每個物件做mask的顏色設定，其中255為AirSim的預設mask顏色的數量，因此要做程式保護避免error</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> mesh_name <span class="keyword">in</span> objects:</span><br><span class="line">    <span class="keyword">if</span> mask_color_cnt + <span class="number">1</span> &lt; <span class="number">255</span>:</span><br><span class="line">        client.simSetSegmentationObjectID(mesh_name, mask_color_cnt + <span class="number">1</span>, <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="取得Scene、Segmentation-mask"><a href="#取得Scene、Segmentation-mask" class="headerlink" title="取得Scene、Segmentation mask"></a>取得Scene、Segmentation mask</h2><p>接著必須先取得兩張圖片，分別是原始場景圖以及Segmentation mask的圖片，而AirSim得到的資料一開始是string，必須轉換成uint8，且原始圖片要多儲存一份，之後用來畫上bounding box，程式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> airsim</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># get images response</span></span><br><span class="line">ori_response, seg_response,  = client.simGetImages(</span><br><span class="line">    [airsim.ImageRequest(camera_name, airsim.ImageType.Scene), airsim.ImageRequest(camera_name, airsim.ImageType.Segmentation)]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># get original image from airsim</span></span><br><span class="line">ori_raw_image = ori_response.image_data_uint8</span><br><span class="line"><span class="comment"># get segmentation image from airsim</span></span><br><span class="line">seg_raw_image = seg_response.image_data_uint8</span><br><span class="line"></span><br><span class="line"><span class="comment"># trans to uint_8 array form</span></span><br><span class="line">bbox_img_ary = cv2.imdecode(airsim.string_to_uint8_array(ori_raw_image), cv2.IMREAD_COLOR)</span><br><span class="line">ori_img_ary = cv2.imdecode(airsim.string_to_uint8_array(ori_raw_image), cv2.IMREAD_COLOR)</span><br><span class="line">seg_img_ary = cv2.imdecode(airsim.string_to_uint8_array(seg_raw_image), cv2.IMREAD_COLOR)</span><br></pre></td></tr></table></figure>
+
+<p>ori_img_ary、seg_img_ary輸出後儲存的圖片分別如下：</p>
+<div style="display:inline-block">
+<center class='half'>
+<image src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/scene.jpg?raw=true" alt="image1" width="850"><image src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/mask.jpg?raw=true" alt="image2" width="850">
+</center>
+</div>
+
+<h2 id="繪製bounding-box"><a href="#繪製bounding-box" class="headerlink" title="繪製bounding box"></a>繪製bounding box</h2><p>為每個物件標上各自的mask之後，就可以開始生成bounding box，而這邊最簡單的方法就是找到對應顏色的最邊邊的像素點，依照這些像素點的座標去算出四邊形的四個頂點座標</p>
+<p>例如：下圖中紅色閃電最邊界的點的座標，就能知道可以剛好框住這個圖案的四邊形頂點分別為：<br>($x_2, y_1), (x_3, y_1) ,(x_2, y_3), (x_3, y_3)$</p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/findbbox.png?raw=true"></p>
+<p>可以利用下面的API來得到bounding box的資料，x和y代表bounding box左上角的頂點座標，w和h分別代表四邊形的寬和長</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment">#contour:mask infomation</span></span><br><span class="line">x, y, w, h = cv2.boundingRect(contour)</span><br></pre></td></tr></table></figure>
+
+<p>之後將座標轉換為Yolo格式 x, y, w, h</p>
+<ul>
+<li>x, y 代表該bndBox的中心座標與圖片寬高的比值，是bndBox歸一化後的中心座標</li>
+<li>w, h代表該bndBox的寬高與輸入圖像寬高的比值，是bndBox歸一化後的寬高座標</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Calculate the relative coordinates of the center of the bounding box (normalized coordinates)</span></span><br><span class="line">center_x = (x + w / <span class="number">2</span>) / image.shape[<span class="number">1</span>]</span><br><span class="line">center_y = (y + h / <span class="number">2</span>) / image.shape[<span class="number">0</span>]</span><br><span class="line">relative_width = w / image.shape[<span class="number">1</span>]</span><br><span class="line">relative_height = h / image.shape[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>最後將所有的bounding box畫到先前預存的原圖上就可以了</p>
+<h1 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h1><p>最後生成出來的資料如圖：</p>
+<p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/bbox.jpg?raw=true"></p>
+<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><p>如果想試用看看生成工具可以到我的<a target="_blank" rel="noopener" href="https://github.com/Kura0913/VR-Dataset-Generator.git">github</a>下載，裡面也有我做的VR環境執行檔下載連結</p>
+<p>如果有發現bug可以在issue通知我</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Unreal-Engine/" rel="tag"># Unreal Engine</a>
+              <a href="/tags/Airsim/" rel="tag"># Airsim</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/20/AirSimAPI/" rel="prev" title="AirSimAPI">
+      <i class="fa fa-chevron-left"></i> AirSimAPI
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">環境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%8E%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">過程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%8F%E5%8A%83"><span class="nav-number">3.1.</span> <span class="nav-text">規劃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E7%94%9F%E6%88%90Classes"><span class="nav-number">3.2.</span> <span class="nav-text">設定生成Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E5%BE%97Scene%E3%80%81Segmentation-mask"><span class="nav-number">3.3.</span> <span class="nav-text">取得Scene、Segmentation mask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B9%AA%E8%A3%BDbounding-box"><span class="nav-number">3.4.</span> <span class="nav-text">繪製bounding box</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">結果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github"><span class="nav-number">5.</span> <span class="nav-text">Github</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kura Huang"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kura Huang</p>
+  <div class="site-description" itemprop="description">工程師要學的東西實在太多了，學多就容易忘記，趁自己還記得的時候做成筆記，之後有需要的時候就能快速找到解法</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kura0913" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kura0913" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UC2atpGUzgHlM-VvvgFZ3cqQ" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC2atpGUzgHlM-VvvgFZ3cqQ" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kura Huang</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+-->
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
