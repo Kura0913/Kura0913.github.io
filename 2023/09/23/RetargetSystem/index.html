@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用">
+  <meta name="description" content="前言當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UE5 Retarget System">
 <meta property="og:url" content="https://kura0913.github.io/2023/09/23/RetargetSystem/index.html">
 <meta property="og:site_name" content="Kura&#39;s BLOG">
-<meta property="og:description" content="當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用">
+<meta property="og:description" content="前言當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/1.png?raw=true">
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/2.png?raw=true">
@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/17.png?raw=true">
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/18.png?raw=true">
 <meta property="article:published_time" content="2023-09-23T05:59:48.000Z">
-<meta property="article:modified_time" content="2024-02-03T07:03:23.485Z">
+<meta property="article:modified_time" content="2024-03-20T05:42:32.711Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Retarget System">
@@ -251,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-02-03 15:03:23" itemprop="dateModified" datetime="2024-02-03T15:03:23+08:00">2024-02-03</time>
+                <time title="修改時間：2024-03-20 13:42:32" itemprop="dateModified" datetime="2024-03-20T13:42:32+08:00">2024-03-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,7 +278,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>當你製作一個遊戲，覺得預設的人物太單調時，肯定會想要幫他換上新的模型，但是匯入新模型會面臨到的問題是：兩個骨架的動畫是無法共用的，而在UE4，只能透過匯入骨架結構相近的模型，用相對”碰運氣”的方式去做骨架的Retarget，而UE5提供了新的Retarget System，可以細部調整骨架對接的方式，讓兩個骨架之間的動畫可以互相通用</p>
 <span id="more"></span>
 <h3 id="匯入模型"><a href="#匯入模型" class="headerlink" title="匯入模型"></a>匯入模型</h3><p>網路上免費的模型資源少之又少，但好險有Adobe的<a target="_blank" rel="noopener" href="https://www.mixamo.com/#/?page=1&type=Character">Mixamo</a>，提供了許多免費的模型與動畫<br>這邊先下載好一個模型及動畫後，開啟專案，到達要匯入的資料夾後，點選左上角的”import”，將要匯入的FBX檔全部選取</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/RetargetSystem/1.png?raw=true"></p>
@@ -396,7 +396,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%AF%E5%85%A5%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">匯入模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retarget-System"><span class="nav-number">2.</span> <span class="nav-text">Retarget System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-IK-Rig"><span class="nav-number">2.1.</span> <span class="nav-text">Set IK Rig</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">★</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IK-Retargeter"><span class="nav-number">2.2.</span> <span class="nav-text">IK Retargeter</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%AF%E5%85%A5%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">匯入模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retarget-System"><span class="nav-number">3.</span> <span class="nav-text">Retarget System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-IK-Rig"><span class="nav-number">3.1.</span> <span class="nav-text">Set IK Rig</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">3.1.1.</span> <span class="nav-text">★</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IK-Retargeter"><span class="nav-number">3.2.</span> <span class="nav-text">IK Retargeter</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
