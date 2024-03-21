@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/findbbox.png?raw=true">
 <meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/bbox.jpg?raw=true">
 <meta property="article:published_time" content="2024-03-20T06:34:59.000Z">
-<meta property="article:modified_time" content="2024-03-20T16:14:53.338Z">
+<meta property="article:modified_time" content="2024-03-21T11:17:06.913Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Airsim">
@@ -235,7 +235,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-03-21 00:14:53" itemprop="dateModified" datetime="2024-03-21T00:14:53+08:00">2024-03-21</time>
+                <time title="修改時間：2024-03-21 19:17:06" itemprop="dateModified" datetime="2024-03-21T19:17:06+08:00">2024-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -309,7 +309,8 @@
 </div>
 
 <h3 id="繪製bounding-box"><a href="#繪製bounding-box" class="headerlink" title="繪製bounding box"></a>繪製bounding box</h3><p>為每個物件標上各自的mask之後，就可以開始生成bounding box，而這邊最簡單的方法就是找到對應顏色的最邊邊的像素點，依照這些像素點的座標去算出四邊形的四個頂點座標</p>
-<p>例如：下圖中紅色閃電最邊界的點的座標，就能知道可以剛好框住這個圖案的四邊形頂點分別為：<br>($x_2, y_1), (x_3, y_1) ,(x_2, y_3), (x_3, y_3)$</p>
+<p>例如：下圖中紅色閃電最邊界的點的座標，就能知道可以剛好框住這個圖案的四邊形頂點分別為：</p>
+<p>$(x_2, y_1), (x_3, y_1) ,(x_2, y_3), (x_3, y_3)$</p>
 <p><img src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/findbbox.png?raw=true"></p>
 <p>可以利用下面的API來得到bounding box的資料，x和y代表bounding box左上角的頂點座標，w和h分別代表四邊形的寬和長</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment">#contour:mask infomation</span></span><br><span class="line">x, y, w, h = cv2.boundingRect(contour)</span><br></pre></td></tr></table></figure>
