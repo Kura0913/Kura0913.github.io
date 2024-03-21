@@ -20,21 +20,19 @@
     var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前言先前介紹過AirSim plugin的安裝以及用途，而AirSim提供了許多的API，可以透過python來做各種情境的模擬，這篇將會介紹如何安裝、使用AirSim API">
+  <meta name="description" content="前言 先前介紹過AirSim plugin的安裝以及用途，而AirSim提供了許多的API，可以透過python來做各種情境的模擬，這篇將會介紹如何安裝、使用AirSim API">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AirSimAPI">
+<meta property="og:title" content="AirSim API">
 <meta property="og:url" content="https://kura0913.github.io/2024/03/20/AirSimAPI/index.html">
 <meta property="og:site_name" content="Kura&#39;s BLOG">
-<meta property="og:description" content="前言先前介紹過AirSim plugin的安裝以及用途，而AirSim提供了許多的API，可以透過python來做各種情境的模擬，這篇將會介紹如何安裝、使用AirSim API">
+<meta property="og:description" content="前言 先前介紹過AirSim plugin的安裝以及用途，而AirSim提供了許多的API，可以透過python來做各種情境的模擬，這篇將會介紹如何安裝、使用AirSim API">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://github.com/Kura0913/blog-file/blob/main/AirSimAPI/1.png?raw=true">
 <meta property="article:published_time" content="2024-03-20T06:32:30.000Z">
-<meta property="article:modified_time" content="2024-03-21T11:37:03.237Z">
+<meta property="article:modified_time" content="2024-03-21T12:22:55.543Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Airsim">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Kura0913/blog-file/blob/main/AirSimAPI/1.png?raw=true">
 
 <link rel="canonical" href="https://kura0913.github.io/2024/03/20/AirSimAPI/">
 
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>AirSimAPI | Kura's BLOG</title>
+  <title>AirSim API | Kura's BLOG</title>
   
 
 
@@ -217,7 +215,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          AirSimAPI
+          AirSim API
         </h1>
 
         <div class="post-meta">
@@ -234,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-03-21 19:37:03" itemprop="dateModified" datetime="2024-03-21T19:37:03+08:00">2024-03-21</time>
+                <time title="修改時間：2024-03-21 20:22:55" itemprop="dateModified" datetime="2024-03-21T20:22:55+08:00">2024-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,29 +263,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>先前介紹過AirSim plugin的安裝以及用途，而AirSim提供了許多的API，可以透過python來做各種情境的模擬，這篇將會介紹如何安裝、使用AirSim API</p>
+        <h1 id="前言">前言</h1>
+<p>先前介紹過AirSim
+plugin的安裝以及用途，而AirSim提供了許多的API，可以透過python來做各種情境的模擬，這篇將會介紹如何安裝、使用AirSim
+API</p>
 <span id="more"></span>
-
-<h1 id="環境配置"><a href="#環境配置" class="headerlink" title="環境配置"></a>環境配置</h1><p>環境的建置可以自行選擇是否建立在Anaconda，以方便作環境的管理，以下是AirSim的環境配置：</p>
+<h1 id="環境配置">環境配置</h1>
+<p>環境的建置可以自行選擇是否建立在Anaconda，以方便作環境的管理，以下是AirSim的環境配置：</p>
 <ul>
 <li>python： 3.5 or later versions</li>
 <li>numpy 1.21.6</li>
-<li><a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/apis/">AirSim API</a></li>
+<li><a target="_blank" rel="noopener" href="https://microsoft.github.io/AirSim/apis/">AirSim
+API</a></li>
 <li>wheel 0.42.0</li>
 <li>opencv-python</li>
 </ul>
 <p>配置好python的版本之後，依照下列順序安裝即可:</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy==<span class="number">1</span>.<span class="number">21</span>.<span class="number">6</span></span><br><span class="line">pip install msgpack-rpc-python</span><br><span class="line">pip install wheel==<span class="number">0</span>.<span class="number">42</span>.<span class="number">0</span></span><br><span class="line">pip install airsim</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>安裝完成後，可以執行看看AirSim提供的測試code，確認環境是否有安裝成功</p>
+<h1 id="使用">使用</h1>
+<p>安裝完成後，可以執行看看AirSim提供的測試code，確認環境是否有安裝成功</p>
 <p><strong>執行程式前請先在專案開始執行該LEVEL，再執行測試code，否則API會連接失敗</strong></p>
-<p>測試code的位置：</p>
-<ul>
-<li>UE4：.\AirSim\PythonClient\car\hello_car.py</li>
-<li>UE5：.\Colosseum\PythonClient\car\hello_car.py</li>
-</ul>
+<p>測試code的位置： * UE4：._car.py * UE5：._car.py</p>
 <p>執行成功後會顯示以下訊息：</p>
-<p><img src="https://github.com/Kura0913/blog-file/blob/main/AirSimAPI/1.png?raw=true"></p>
+<p><img
+src="https://github.com/Kura0913/blog-file/blob/main/AirSimAPI/1.png?raw=true" /></p>
 <p>且車會以API的指令做移動</p>
 
     </div>

@@ -20,37 +20,18 @@
     var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前言在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到 怎麼沒有我要的模型?或是模型是對了，但是顏色卻不是你想要的，這時可以選擇重新做一個Texture，優點當然是可以為物件做一個全新的顏色設計，而且精細度可以依個人需要去做調整。 但是，如果沒有3D建模的專業的人怎麼辦?這時候就適合使用接下來要教學的方法，這個方法只會調整Texture">
+  <meta name="description" content="前言 在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到 怎麼沒有我要的模型?或是模型是對了，但是顏色卻不是你想要的，這時可以選擇重新做一個Texture，優點當然是可以為物件做一個全新的顏色設計，而且精細度可以依個人需要去做調整。 但是，如果沒有3D建模的專業的人怎麼辦?這時候就適合使用接下來要教學的方法，這個方法只會調整Te">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unreal Engine 調整Material的顏色">
 <meta property="og:url" content="https://kura0913.github.io/2023/07/11/UnrealEngineMaterialColor/index.html">
 <meta property="og:site_name" content="Kura&#39;s BLOG">
-<meta property="og:description" content="前言在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到 怎麼沒有我要的模型?或是模型是對了，但是顏色卻不是你想要的，這時可以選擇重新做一個Texture，優點當然是可以為物件做一個全新的顏色設計，而且精細度可以依個人需要去做調整。 但是，如果沒有3D建模的專業的人怎麼辦?這時候就適合使用接下來要教學的方法，這個方法只會調整Texture">
+<meta property="og:description" content="前言 在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到 怎麼沒有我要的模型?或是模型是對了，但是顏色卻不是你想要的，這時可以選擇重新做一個Texture，優點當然是可以為物件做一個全新的顏色設計，而且精細度可以依個人需要去做調整。 但是，如果沒有3D建模的專業的人怎麼辦?這時候就適合使用接下來要教學的方法，這個方法只會調整Te">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor1.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor2.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor3.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor4.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor5.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor6.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor7.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor8.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor9.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor10.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor11.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor12.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor13.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor14.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor15.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor16.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor17.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor18.png?raw=true">
 <meta property="article:published_time" content="2023-07-11T12:45:49.000Z">
 <meta property="article:modified_time" content="2024-03-20T07:07:25.473Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor1.png?raw=true">
 
 <link rel="canonical" href="https://kura0913.github.io/2023/07/11/UnrealEngineMaterialColor/">
 
@@ -277,46 +258,74 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在建立Level的時候，會調用到很多Static Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到</p>
+        <h1 id="前言">前言</h1>
+<p>在建立Level的時候，會調用到很多Static
+Mesh、Actor來裝飾地圖，而在建立地圖的途中，可能會遇到</p>
 <p>怎麼沒有我要的模型?或是模型是對了，但是顏色卻不是你想要的，這時可以選擇重新做一個Texture，優點當然是可以為物件做一個全新的顏色設計，而且精細度可以依個人需要去做調整。</p>
 <p>但是，如果沒有3D建模的專業的人怎麼辦?這時候就適合使用接下來要教學的方法，這個方法只會調整Texture的顏色，本來設計好的紋路是不會去動到的，那麼話不多說，開始本篇的教學</p>
 <span id="more"></span>
-
-<h1 id="基於原本的Texture，調整Material顏色教學"><a href="#基於原本的Texture，調整Material顏色教學" class="headerlink" title="基於原本的Texture，調整Material顏色教學"></a>基於原本的Texture，調整Material顏色教學</h1><p>首先，我們先找到想要調整的Material，這邊以圖中的”MI_jcGrdLineA”做示範，點擊兩下打開</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor1.png?raw=true"></p>
+<h1
+id="基於原本的texture調整material顏色教學">基於原本的Texture，調整Material顏色教學</h1>
+<p>首先，我們先找到想要調整的Material，這邊以圖中的"MI_jcGrdLineA"做示範，點擊兩下打開</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor1.png?raw=true" /></p>
 <p>如果打開是以下畫面的話就參考接下來的步驟，如果是Blueprint畫面，則可以直接跳至★</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor2.png?raw=true"></p>
-<p>接下來，右邊欄有一個”BaceColor”，是這個Material檔案套用的Texture，點擊檔名下方的”前往資料夾”，就會跳到存放Texture的地方</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor3.png?raw=true"></p>
-<p>這邊先把Texture的路徑記下來，然後回到”MI_jcGrdLineA”，右邊欄有一個”Parent”，接下來自己製作Material的時候，要基於這個”Parent”的設計結構，最後顯示出來的紋路才會跟原本的一樣，因此我們一樣點選檔名下方的”前往資料夾”，並打開該檔案，應該會看到Blueprint畫面，如果不是，就基於上述方法繼續往上找”Parent”，直到打開的頁面為Blueprint為止，這邊的”Parent”的檔名為”MM_opacity”</p>
-<h2 id="★"><a href="#★" class="headerlink" title="★"></a>★</h2><p>打開後，整個Blueprint就是模板，等等要基於此模板來設計，全選之後先放著</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor4.png?raw=true"></p>
-<p>到要存放新的Material的資料夾點擊右鍵，選擇”Material”</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor5.png?raw=true"></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor2.png?raw=true" /></p>
+<p>接下來，右邊欄有一個"BaceColor"，是這個Material檔案套用的Texture，點擊檔名下方的"前往資料夾"，就會跳到存放Texture的地方</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor3.png?raw=true" /></p>
+<p>這邊先把Texture的路徑記下來，然後回到"MI_jcGrdLineA"，右邊欄有一個"Parent"，接下來自己製作Material的時候，要基於這個"Parent"的設計結構，最後顯示出來的紋路才會跟原本的一樣，因此我們一樣點選檔名下方的"前往資料夾"，並打開該檔案，應該會看到Blueprint畫面，如果不是，就基於上述方法繼續往上找"Parent"，直到打開的頁面為Blueprint為止，這邊的"Parent"的檔名為"MM_opacity"</p>
+<h2 id="section">★</h2>
+<p>打開後，整個Blueprint就是模板，等等要基於此模板來設計，全選之後先放著</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor4.png?raw=true" /></p>
+<p>到要存放新的Material的資料夾點擊右鍵，選擇"Material"</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor5.png?raw=true" /></p>
 <p>取好名字後打開，會看到以下畫面</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor6.png?raw=true"></p>
-<p>回到”MM_opacity”(your Parent file)，把剛剛框起來部分複製，然後貼到剛剛自己建立的Material貼上，貼上後你會發現線全部斷掉了，這是正常的，請依據”MM_opacity”(your Parent file)的設計連上</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor7.png?raw=true"></p>
-<p>按住鍵盤第一排的3，在空白處點左鍵，對出現的方塊點右鍵，選擇圖中紅色框框中的選項，並為他取一個你認得出來的名字，這邊取名為”Tint_colour”</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor8.png?raw=true"></p>
-<p>按住鍵盤第一排的1，在空白處點左鍵，對出現的方塊點右鍵，選擇圖中紅色框框中的選項，並為他取一個你認得出來的名字，這邊取名為”Tint_Intensity”</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor9.png?raw=true"></p>
-<p>在空白處點右鍵，搜尋”Multiply”，叫出方塊，在空白處再點一下右鍵，搜尋”Blend_Overlay”，同樣叫出方塊，然後將線連接成下圖</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor10.png?raw=true"></p>
-<p>如果連接會用到”Opacity Mask”節點，則點選棕色方塊，到左邊欄找到”Blend Mode”選項，調成”Mask”來啟用節點</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor11.png?raw=true"></p>
-<p>點擊名為”BaceColor”的方塊，這時左下角可以找到一個可以選擇Texture的地方，將前面記下的Texture匯入，匯入成功後，紅色框框處都會變成你所選的Texture，完成後就可以存檔了</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor12.png?raw=true"></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor6.png?raw=true" /></p>
+<p>回到"MM_opacity"(your Parent
+file)，把剛剛框起來部分複製，然後貼到剛剛自己建立的Material貼上，貼上後你會發現線全部斷掉了，這是正常的，請依據"MM_opacity"(your
+Parent file)的設計連上</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor7.png?raw=true" /></p>
+<p>按住鍵盤第一排的3，在空白處點左鍵，對出現的方塊點右鍵，選擇圖中紅色框框中的選項，並為他取一個你認得出來的名字，這邊取名為"Tint_colour"</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor8.png?raw=true" /></p>
+<p>按住鍵盤第一排的1，在空白處點左鍵，對出現的方塊點右鍵，選擇圖中紅色框框中的選項，並為他取一個你認得出來的名字，這邊取名為"Tint_Intensity"</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor9.png?raw=true" /></p>
+<p>在空白處點右鍵，搜尋"Multiply"，叫出方塊，在空白處再點一下右鍵，搜尋"Blend_Overlay"，同樣叫出方塊，然後將線連接成下圖</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor10.png?raw=true" /></p>
+<p>如果連接會用到"Opacity Mask"節點，則點選棕色方塊，到左邊欄找到"Blend
+Mode"選項，調成"Mask"來啟用節點</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor11.png?raw=true" /></p>
+<p>點擊名為"BaceColor"的方塊，這時左下角可以找到一個可以選擇Texture的地方，將前面記下的Texture匯入，匯入成功後，紅色框框處都會變成你所選的Texture，完成後就可以存檔了</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor12.png?raw=true" /></p>
 <p>回到自己建立的Material的資料夾，對自己建立的Material按右鍵，選擇紅色框框的選項，點選後會建立一個新的Material，取好名字後打開</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor13.png?raw=true"></p>
-<p>將右欄的”Parent”改為前面自己建立的Material</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor14.png?raw=true"></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor13.png?raw=true" /></p>
+<p>將右欄的"Parent"改為前面自己建立的Material</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor14.png?raw=true" /></p>
 <p>此時右欄會出現剛剛我們做的設定，將他們打勾就可以啟用了</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor15.png?raw=true"></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor15.png?raw=true" /></p>
 <p>這邊就示範幾種顏色</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor16.png?raw=true"><br><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor17.png?raw=true"><br><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor18.png?raw=true"></p>
-<p>稍微玩過之後就可以發現，”Tint_colour”可以用來做初步的選擇顏色，”Tint_Intensity”可以做後續的亮度調整，接下來就套用到原先的物件上，挑出自己滿意的顏色吧~</p>
-<p>以上參考自:<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=M1olxyt7Zw8">https://www.youtube.com/watch?v=M1olxyt7Zw8</a></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor16.png?raw=true" />
+<img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor17.png?raw=true" />
+<img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineMaterialColor/MaterialColor18.png?raw=true" /></p>
+<p>稍微玩過之後就可以發現，"Tint_colour"可以用來做初步的選擇顏色，"Tint_Intensity"可以做後續的亮度調整，接下來就套用到原先的物件上，挑出自己滿意的顏色吧~</p>
+<p>以上參考自:<a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=M1olxyt7Zw8">https://www.youtube.com/watch?v=M1olxyt7Zw8</a></p>
 
     </div>
 
@@ -400,7 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%96%BC%E5%8E%9F%E6%9C%AC%E7%9A%84Texture%EF%BC%8C%E8%AA%BF%E6%95%B4Material%E9%A1%8F%E8%89%B2%E6%95%99%E5%AD%B8"><span class="nav-number">2.</span> <span class="nav-text">基於原本的Texture，調整Material顏色教學</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%98%85"><span class="nav-number">2.1.</span> <span class="nav-text">★</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%96%BC%E5%8E%9F%E6%9C%AC%E7%9A%84texture%E8%AA%BF%E6%95%B4material%E9%A1%8F%E8%89%B2%E6%95%99%E5%AD%B8"><span class="nav-number">2.</span> <span class="nav-text">基於原本的Texture，調整Material顏色教學</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">2.1.</span> <span class="nav-text">★</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

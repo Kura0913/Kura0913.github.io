@@ -20,27 +20,18 @@
     var CONFIG = {"hostname":"kura0913.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前言這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章">
+  <meta name="description" content="前言 這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unreal Engine設定及除錯">
 <meta property="og:url" content="https://kura0913.github.io/2023/07/20/UnrealEngineSetting/index.html">
 <meta property="og:site_name" content="Kura&#39;s BLOG">
-<meta property="og:description" content="前言這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章">
+<meta property="og:description" content="前言 這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_1.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_2.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_3.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_4.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild1.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild2.png?raw=true">
-<meta property="og:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild3.png?raw=true">
 <meta property="article:published_time" content="2023-07-20T12:09:05.000Z">
 <meta property="article:modified_time" content="2024-03-20T07:11:55.244Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_1.png?raw=true">
 
 <link rel="canonical" href="https://kura0913.github.io/2023/07/20/UnrealEngineSetting/">
 
@@ -267,37 +258,59 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章</p>
+        <h1 id="前言">前言</h1>
+<p>這些都是我在開發的過程中，有遇到需要調整的項目，之後如果有遇到新的問題，也會持續更新在這篇文章</p>
 <span id="more"></span>
-
-
-<h1 id="Visual-Studio版本更改"><a href="#Visual-Studio版本更改" class="headerlink" title="Visual Studio版本更改"></a>Visual Studio版本更改</h1><p>有些人使用的Visual Studio版本或許不是2022的版本，或是使用其他的編譯器，但又不想重新下載，其實是有解決辦法的，點擊左上角<br>Edit-&gt;Editor Preferences-&gt;General-&gt;Source code， 會看到”Source Code Editor”，點開來改成自己想使用的編譯器就行了</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_1.png?raw=true"></p>
-<h1 id="解決切換畫面後，畫面卡頓問題"><a href="#解決切換畫面後，畫面卡頓問題" class="headerlink" title="解決切換畫面後，畫面卡頓問題"></a>解決切換畫面後，畫面卡頓問題</h1><p>在模擬的時候常常會畫面切來切去，但只要一點到Unreal以外的視窗，模擬的畫面就會非常卡頓，這時可以透過更改設定來解決，<br>Edit-&gt;Editor Preferences-&gt;General-&gt;Performance，把”Use Less CPU when in Background”取消掉，就可以解決這個問題</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_2.png?raw=true"></p>
-<h1 id="打包地圖缺失"><a href="#打包地圖缺失" class="headerlink" title="打包地圖缺失"></a>打包地圖缺失</h1><p>打包地圖的時候，可能會遇到地圖只打包了你正在使用的地圖，或是預設地圖，此時就要透過設定來修改打包的目標，<strong>建議每次的打包，都要執行接下來的設定</strong><br>Edit-&gt;Project Settings-&gt;Project-&gt;Maps &amp; Modes，下方有個”Default Maps”的設定，建議將Editor Startup Map和Game Default Map都換成執行檔開啟執行時，第一張要執行的地圖</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_3.png?raw=true"></p>
-<p>接著，到Project-&gt;Packaging-&gt;Packaging-&gt;Advanced，有一個”List of maps to include in a packaged build”的選項，點擊”加號”之後，到專案的資料夾下找出想打包的地圖，有幾張就加幾張</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_4.png?raw=true"></p>
+<h1 id="visual-studio版本更改">Visual Studio版本更改</h1>
+<p>有些人使用的Visual
+Studio版本或許不是2022的版本，或是使用其他的編譯器，但又不想重新下載，其實是有解決辦法的，點擊左上角
+Edit-&gt;Editor Preferences-&gt;General-&gt;Source code， 會看到"Source
+Code Editor"，點開來改成自己想使用的編譯器就行了</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_1.png?raw=true" /></p>
+<h1 id="解決切換畫面後畫面卡頓問題">解決切換畫面後，畫面卡頓問題</h1>
+<p>在模擬的時候常常會畫面切來切去，但只要一點到Unreal以外的視窗，模擬的畫面就會非常卡頓，這時可以透過更改設定來解決，
+Edit-&gt;Editor Preferences-&gt;General-&gt;Performance，把"Use Less CPU
+when in Background"取消掉，就可以解決這個問題</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_2.png?raw=true" /></p>
+<h1 id="打包地圖缺失">打包地圖缺失</h1>
+<p>打包地圖的時候，可能會遇到地圖只打包了你正在使用的地圖，或是預設地圖，此時就要透過設定來修改打包的目標，<strong>建議每次的打包，都要執行接下來的設定</strong>
+Edit-&gt;Project Settings-&gt;Project-&gt;Maps &amp;
+Modes，下方有個"Default Maps"的設定，建議將Editor Startup Map和Game
+Default Map都換成執行檔開啟執行時，第一張要執行的地圖</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_3.png?raw=true" /></p>
+<p>接著，到Project-&gt;Packaging-&gt;Packaging-&gt;Advanced，有一個"List
+of maps to include in a packaged
+build"的選項，點擊"加號"之後，到專案的資料夾下找出想打包的地圖，有幾張就加幾張</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/Setting_4.png?raw=true" /></p>
 <p>這樣打包時就會把在List裡的地圖通通打包進去</p>
-<h1 id="開啟檔案失敗"><a href="#開啟檔案失敗" class="headerlink" title="開啟檔案失敗"></a>開啟檔案失敗</h1><p>在執行C++專案時，如果專案是有換過電腦執行，可能會出現以下錯誤:</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild.png?raw=true"></p>
-<p>上面會顯示在某個路徑上無法找到”YourProjectName.uproject”的檔案</p>
-<p>正常來說，在移動完專案之後， 會對”YourProjectName.uproject”點擊右鍵，選擇”Generate Visual Studio project files”重新生成專案文件，在這個過程中檔案相關的路徑也會被更新，但是有時候啟動檔的路徑不會被更新到，這時候就要手動調整</p>
-<p>啟動檔的路徑儲存在 <strong>.\YourProjectFolder\Intermediate\ProjectFiles\YourProjectName.vcxproj.user</strong></p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild1.png?raw=true"></p>
+<h1 id="開啟檔案失敗">開啟檔案失敗</h1>
+<p>在執行C++專案時，如果專案是有換過電腦執行，可能會出現以下錯誤:</p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild.png?raw=true" /></p>
+<p>上面會顯示在某個路徑上無法找到"YourProjectName.uproject"的檔案</p>
+<p>正常來說，在移動完專案之後，
+會對"YourProjectName.uproject"點擊右鍵，選擇"Generate Visual Studio
+project
+files"重新生成專案文件，在這個過程中檔案相關的路徑也會被更新，但是有時候啟動檔的路徑不會被更新到，這時候就要手動調整</p>
+<p>啟動檔的路徑儲存在 <strong>..vcxproj.user</strong></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild1.png?raw=true" /></p>
 <p>把這個檔案打開會有下列內容，其中紅色框框處就是啟動檔的路徑</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild2.png?raw=true"></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild2.png?raw=true" /></p>
 <p>這邊有兩個選擇：</p>
 <ul>
-<li><p>1、改成現在電腦上的路徑</p>
-</li>
-<li><p>2、改成相對路徑</p>
-</li>
+<li><p>1、改成現在電腦上的路徑</p></li>
+<li><p>2、改成相對路徑</p></li>
 </ul>
 <p>我個人推薦第2種方法，可以避免之後專案移動時又發生一樣的問題</p>
 <p>修改方式就是將紅色框框處的路徑改為：($SolutionDir)YourProjectName.uproject</p>
-<p><img src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild3.png?raw=true"></p>
+<p><img
+src="https://github.com/Kura0913/Blog-image/blob/main/UnrealEngineSetting/GetPathFaild3.png?raw=true" /></p>
 <p>修改後儲存，專案就可以順利啟動</p>
 
     </div>
@@ -382,7 +395,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Visual-Studio%E7%89%88%E6%9C%AC%E6%9B%B4%E6%94%B9"><span class="nav-number">2.</span> <span class="nav-text">Visual Studio版本更改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E5%88%87%E6%8F%9B%E7%95%AB%E9%9D%A2%E5%BE%8C%EF%BC%8C%E7%95%AB%E9%9D%A2%E5%8D%A1%E9%A0%93%E5%95%8F%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">解決切換畫面後，畫面卡頓問題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%9C%B0%E5%9C%96%E7%BC%BA%E5%A4%B1"><span class="nav-number">4.</span> <span class="nav-text">打包地圖缺失</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%95%9F%E6%AA%94%E6%A1%88%E5%A4%B1%E6%95%97"><span class="nav-number">5.</span> <span class="nav-text">開啟檔案失敗</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#visual-studio%E7%89%88%E6%9C%AC%E6%9B%B4%E6%94%B9"><span class="nav-number">2.</span> <span class="nav-text">Visual Studio版本更改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E5%88%87%E6%8F%9B%E7%95%AB%E9%9D%A2%E5%BE%8C%E7%95%AB%E9%9D%A2%E5%8D%A1%E9%A0%93%E5%95%8F%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">解決切換畫面後，畫面卡頓問題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%9C%B0%E5%9C%96%E7%BC%BA%E5%A4%B1"><span class="nav-number">4.</span> <span class="nav-text">打包地圖缺失</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%95%9F%E6%AA%94%E6%A1%88%E5%A4%B1%E6%95%97"><span class="nav-number">5.</span> <span class="nav-text">開啟檔案失敗</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
