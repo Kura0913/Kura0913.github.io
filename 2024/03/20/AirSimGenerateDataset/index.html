@@ -28,7 +28,7 @@
 <meta property="og:description" content="前言 之前接觸到object detection相關的研究，在過程中遇到Dataset不足的問題，因此教授想嘗試看看使用VR環境來產生Dataset來補足資料，並驗證看看對於最後真實資料的detection是否有幫助 而我就負責製作Dataset的生成工具，此篇紀錄我是如何生成VR Dataset">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-03-20T06:34:59.000Z">
-<meta property="article:modified_time" content="2024-03-21T12:56:38.991Z">
+<meta property="article:modified_time" content="2024-03-22T05:14:51.757Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Airsim">
@@ -232,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-03-21 20:56:38" itemprop="dateModified" datetime="2024-03-21T20:56:38+08:00">2024-03-21</time>
+                <time title="修改時間：2024-03-22 13:14:51" itemprop="dateModified" datetime="2024-03-22T13:14:51+08:00">2024-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -334,8 +334,9 @@ box左上角的頂點座標，w和h分別代表四邊形的寬和長</p>
 h代表該bndBox的寬高與輸入圖像寬高的比值，是bndBox歸一化後的寬高座標</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Calculate the relative coordinates of the center of the bounding box (normalized coordinates)</span></span><br><span class="line">center_x = (x + w / <span class="number">2</span>) / image.shape[<span class="number">1</span>]</span><br><span class="line">center_y = (y + h / <span class="number">2</span>) / image.shape[<span class="number">0</span>]</span><br><span class="line">relative_width = w / image.shape[<span class="number">1</span>]</span><br><span class="line">relative_height = h / image.shape[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>最後將所有的bounding box畫到先前預存的原圖上就可以了 # 結果
-最後生成出來的資料如圖：</p>
+<p>最後將所有的bounding box畫到先前預存的原圖上就可以了</p>
+<h1 id="結果">結果</h1>
+<p>最後生成出來的資料如圖：</p>
 <p><img
 src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/bbox.jpg?raw=true" /></p>
 <h1 id="github">Github</h1>
@@ -423,7 +424,7 @@ target="_blank" rel="noopener" href="https://github.com/Kura0913/VR-Dataset-Gene
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">環境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%8E%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">過程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%8F%E5%8A%83"><span class="nav-number">3.0.1.</span> <span class="nav-text">規劃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97scenesegmentation-mask"><span class="nav-number">3.0.2.</span> <span class="nav-text">取得Scene、Segmentation mask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%AA%E8%A3%BDbounding-box"><span class="nav-number">3.0.3.</span> <span class="nav-text">繪製bounding box</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">4.</span> <span class="nav-text">Github</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">環境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%8E%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">過程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%8F%E5%8A%83"><span class="nav-number">3.0.1.</span> <span class="nav-text">規劃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97scenesegmentation-mask"><span class="nav-number">3.0.2.</span> <span class="nav-text">取得Scene、Segmentation mask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%AA%E8%A3%BDbounding-box"><span class="nav-number">3.0.3.</span> <span class="nav-text">繪製bounding box</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">結果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">5.</span> <span class="nav-text">Github</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

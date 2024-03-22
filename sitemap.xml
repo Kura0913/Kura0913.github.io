@@ -4,7 +4,7 @@
   <url>
     <loc>https://kura0913.github.io/2024/03/20/AirSimGenerateDataset/</loc>
     
-    <lastmod>2024-03-21</lastmod>
+    <lastmod>2024-03-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -204,14 +204,7 @@
   </url>
   
   <url>
-    <loc>https://kura0913.github.io/categories/Unreal-Engine/Unreal-Engine%E5%AE%89%E8%A3%9D/</loc>
-    <lastmod>2024-03-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://kura0913.github.io/categories/Unreal-Engine/AirSim/AirSim-API-install/</loc>
+    <loc>https://kura0913.github.io/categories/Unreal-Engine/AirSim/Airsim%E6%9B%B4%E6%8F%9BActor/</loc>
     <lastmod>2024-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -232,7 +225,7 @@
   </url>
   
   <url>
-    <loc>https://kura0913.github.io/categories/Unreal-Engine/AirSim/Airsim%E6%9B%B4%E6%8F%9BActor/</loc>
+    <loc>https://kura0913.github.io/categories/Unreal-Engine/AirSim/AirSim-API-install/</loc>
     <lastmod>2024-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -240,6 +233,13 @@
   
   <url>
     <loc>https://kura0913.github.io/categories/Unreal-Engine/Material/</loc>
+    <lastmod>2024-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kura0913.github.io/categories/Unreal-Engine/Unreal-Engine%E5%AE%89%E8%A3%9D/</loc>
     <lastmod>2024-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
