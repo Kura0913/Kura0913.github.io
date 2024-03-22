@@ -28,7 +28,7 @@
 <meta property="og:description" content="前言 之前接觸到object detection相關的研究，在過程中遇到Dataset不足的問題，因此教授想嘗試看看使用VR環境來產生Dataset來補足資料，並驗證看看對於最後真實資料的detection是否有幫助 而我就負責製作Dataset的生成工具，此篇紀錄我是如何生成VR Dataset">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-03-20T06:34:59.000Z">
-<meta property="article:modified_time" content="2024-03-22T05:14:51.757Z">
+<meta property="article:modified_time" content="2024-03-22T16:32:47.673Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Airsim">
@@ -232,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-03-22 13:14:51" itemprop="dateModified" datetime="2024-03-22T13:14:51+08:00">2024-03-22</time>
+                <time title="修改時間：2024-03-23 00:32:47" itemprop="dateModified" datetime="2024-03-23T00:32:47+08:00">2024-03-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,22 +290,22 @@ href="https://kura0913.github.io/2023/07/07/UnrealEngineInstall/">AirSIm
 API install</a></p></li>
 </ul>
 <h1 id="過程">過程</h1>
-<h3 id="規劃">規劃</h3>
+<h2 id="規劃">規劃</h2>
 <p>由於實驗室使用yolo做訓練，因此生成的資料格式會以yolo格式為主</p>
 <p>AirSim其實本身有提供生成2D bounding box的API，背後的演算法是由3D
 bounding box轉換而來，然而AirSim的3D bounding
 box其實是有歪斜的問題，因此最後得到的2D bounding box會有過大的問題</p>
 <p>就上述的原因，必須換另一種作法，這邊我想利用egmentation
-mask作為輔助，透過mask來找到物體的邊界，再依照邊界畫出bounding box ###
-設定生成Classes
-首先要標記生成的Classes，可以使用下列的code來獲取classes對應的actor</p>
+mask作為輔助，透過mask來找到物體的邊界，再依照邊界畫出bounding box</p>
+<h2 id="設定生成classes">設定生成Classes</h2>
+<p>首先要標記生成的Classes，可以使用下列的code來獲取classes對應的actor</p>
 <p>其中 <strong>{object_name}[]*</strong> 的意思是，在level中所有以
 <strong>object_name</strong>
 為開頭的Actor、Mesh，都會被標記為該class，因此在為level中的物件取名字的時候，務必做好規劃</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> airsim</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">client = airsim.VehicleClient()</span><br><span class="line"></span><br><span class="line">objects = client.simListSceneObjects(<span class="string">f&#x27;<span class="subst">&#123;object_name&#125;</span>[\w]*&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>接下來要為每個物件做mask的顏色設定，其中255為AirSim的預設mask顏色的數量，因此要做程式保護避免error</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> mesh_name <span class="keyword">in</span> objects:</span><br><span class="line">    <span class="keyword">if</span> mask_color_cnt + <span class="number">1</span> &lt; <span class="number">255</span>:</span><br><span class="line">        client.simSetSegmentationObjectID(mesh_name, mask_color_cnt + <span class="number">1</span>, <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="取得scenesegmentation-mask">取得Scene、Segmentation mask</h3>
+<h2 id="取得scenesegmentation-mask">取得Scene、Segmentation mask</h2>
 <p>接著必須先取得兩張圖片，分別是Scene以及Segmentation
 mask的圖片，而AirSim得到的資料一開始是string，必須轉換成uint8，且原始圖片要多儲存一份，之後用來畫上bounding
 box，程式如下：</p>
@@ -316,7 +316,7 @@ box，程式如下：</p>
 <image src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/scene.jpg?raw=true" alt="image1" width="850"><image src="https://github.com/Kura0913/Blog-image/blob/main/AirSimGenerateDataset/mask.jpg?raw=true" alt="image2" width="850">
 </center>
 </div>
-<h3 id="繪製bounding-box">繪製bounding box</h3>
+<h2 id="繪製bounding-box">繪製bounding box</h2>
 <p>為每個物件標上各自的mask之後，就可以開始生成bounding
 box，而這邊最簡單的方法就是找到對應顏色的最邊邊的像素點，依照這些像素點的座標去算出四邊形的四個頂點座標</p>
 <p>例如：下圖中紅色閃電最邊界的點的座標，就能知道可以剛好框住這個圖案的四邊形頂點分別為：</p>
@@ -424,7 +424,7 @@ target="_blank" rel="noopener" href="https://github.com/Kura0913/VR-Dataset-Gene
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">環境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%8E%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">過程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%8F%E5%8A%83"><span class="nav-number">3.0.1.</span> <span class="nav-text">規劃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97scenesegmentation-mask"><span class="nav-number">3.0.2.</span> <span class="nav-text">取得Scene、Segmentation mask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%AA%E8%A3%BDbounding-box"><span class="nav-number">3.0.3.</span> <span class="nav-text">繪製bounding box</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">結果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">5.</span> <span class="nav-text">Github</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">環境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%8E%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">過程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%8F%E5%8A%83"><span class="nav-number">3.1.</span> <span class="nav-text">規劃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E7%94%9F%E6%88%90classes"><span class="nav-number">3.2.</span> <span class="nav-text">設定生成Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E5%BE%97scenesegmentation-mask"><span class="nav-number">3.3.</span> <span class="nav-text">取得Scene、Segmentation mask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B9%AA%E8%A3%BDbounding-box"><span class="nav-number">3.4.</span> <span class="nav-text">繪製bounding box</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">結果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">5.</span> <span class="nav-text">Github</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
