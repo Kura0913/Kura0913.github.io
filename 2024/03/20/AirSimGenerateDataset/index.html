@@ -28,7 +28,7 @@
 <meta property="og:description" content="前言 之前接觸到object detection相關的研究，在過程中遇到Dataset不足的問題，因此教授想嘗試看看使用VR環境來產生Dataset來補足資料，並驗證看看對於最後真實資料的detection是否有幫助 而我就負責製作Dataset的生成工具，此篇紀錄我是如何生成VR Dataset">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-03-20T06:34:59.000Z">
-<meta property="article:modified_time" content="2024-03-22T16:32:47.673Z">
+<meta property="article:modified_time" content="2024-03-22T16:37:23.318Z">
 <meta property="article:author" content="Kura Huang">
 <meta property="article:tag" content="Unreal Engine">
 <meta property="article:tag" content="Airsim">
@@ -232,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-03-23 00:32:47" itemprop="dateModified" datetime="2024-03-23T00:32:47+08:00">2024-03-23</time>
+                <time title="修改時間：2024-03-23 00:37:23" itemprop="dateModified" datetime="2024-03-23T00:37:23+08:00">2024-03-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -294,8 +294,9 @@ API install</a></p></li>
 <p>由於實驗室使用yolo做訓練，因此生成的資料格式會以yolo格式為主</p>
 <p>AirSim其實本身有提供生成2D bounding box的API，背後的演算法是由3D
 bounding box轉換而來，然而AirSim的3D bounding
-box其實是有歪斜的問題，因此最後得到的2D bounding box會有過大的問題</p>
-<p>就上述的原因，必須換另一種作法，這邊我想利用egmentation
+box其實是有歪斜的問題，導致最後得到的2D bounding
+box可能會有過大的問題</p>
+<p>就上述的原因，必須換另一種作法，這邊我想利用segmentation
 mask作為輔助，透過mask來找到物體的邊界，再依照邊界畫出bounding box</p>
 <h2 id="設定生成classes">設定生成Classes</h2>
 <p>首先要標記生成的Classes，可以使用下列的code來獲取classes對應的actor</p>
